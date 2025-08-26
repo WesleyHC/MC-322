@@ -1,14 +1,16 @@
 package src;
 public class Hero extends Character {
+    //Atributos
     private int nivel;
     private int experiencia;
 
+    //Construtor
     public Hero(String name, int pontosDeVida, int forca, int nivel, int experiencia){
         super(name, pontosDeVida, forca);
         this.nivel = nivel;
         this.experiencia = experiencia;
     }
-
+    //Getters
     public int getNivel(){
         return nivel;
     }
@@ -16,6 +18,7 @@ public class Hero extends Character {
         return experiencia;
     }
 
+    //Métodos
     public void ganharExperiencia(int xp){
         experiencia += xp;
     }
