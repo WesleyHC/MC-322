@@ -23,11 +23,11 @@ public class Character {
     }
 
     //setters
-    private void setPontosDeVida(int valor){
+    public void setPontosDeVida(int valor){
         pontosDeVida += valor;
     }
 
-    private void setForca(int valor){
+    public void setForca(int valor){
         forca += valor;
     }
 

@@ -20,6 +20,7 @@ public class Satyr extends Hero {
 
     public void usarHabilidadeEspecial(Character alvo){
         super.usarHabilidadeEspecial(alvo);
-        System.out.print("")
+        System.out.print("Sátiro atacou" + alvo.getName());
+        setPontosDeVida(20);
     }
 }
