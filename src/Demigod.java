@@ -16,4 +16,13 @@ public class Demigod extends Hero {
     }
 
     //Métodos
+    public void atacar(Character alvo){
+        super.atacar(alvo, this.getForca());
+    }
+
+    public void usarHabilidadeEspecial(Character alvo){
+        super.usarHabilidadeEspecial(alvo);
+        System.out.println("God's Plan em " + alvo.getName());
+    }
 }
+

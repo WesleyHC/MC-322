@@ -37,6 +37,7 @@ public class Character {
 
         if (pontosDeVida < 0)
             pontosDeVida = 0;
+        
     }
 
     public void exibirStatus(){
@@ -49,4 +50,6 @@ public class Character {
         alvo.receberDano(valor); 
     }
 
+// System.out.println("GAME OVER");
+// System.exit(1);    
 }

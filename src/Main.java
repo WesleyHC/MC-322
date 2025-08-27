@@ -7,9 +7,11 @@ public class Main {
 
         // Exibindo status inicial
         hero.exibirStatus();
-        hero.usarHabilidadeEspecial(monster);
-        hero.ganharExperiencia(monster.getXpConcedido());
+        monster.exibirStatus();
+        hero.atacar(monster, 40);
+        monster.atacar(hero, 60);
         hero.exibirStatus();
+        monster.exibirStatus();
 
     }
 }
