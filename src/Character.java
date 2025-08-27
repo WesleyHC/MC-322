@@ -22,6 +22,15 @@ public class Character {
         return forca;
     }
 
+    //setters
+    private void setPontosDeVida(int valor){
+        pontosDeVida += valor;
+    }
+
+    private void setForca(int valor){
+        forca += valor;
+    }
+
     //Métodos
     public void receberDano(int dano){
         pontosDeVida -= dano;
@@ -36,7 +45,7 @@ public class Character {
         System.out.println("Força: " + forca);
     }
 
-    public void atacar(Character Alvo){
-
+    public void atacar(Character alvo, int valor){
+        alvo.setPontosDeVida(-valor); 
     }
 }
