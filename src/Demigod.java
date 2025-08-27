@@ -2,7 +2,7 @@ package src;
 
 public class Demigod extends Hero {
     //Atributos
-    int divineAfinity;
+    private int divineAfinity;
 
     //Construtor
     public Demigod(String name, int pontosDeVida, int forca, int nivel, int experiencia, int divineAfinity){

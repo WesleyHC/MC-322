@@ -21,6 +21,10 @@ public class Hero extends Character {
     //Métodos
     public void ganharExperiencia(int xp){
         experiencia += xp;
+        if (experiencia>=50){
+            nivel += 1;
+            experiencia -= 50;
+        }
     }
 
     public void exibirStatus(){
@@ -30,6 +34,6 @@ public class Hero extends Character {
     }
 
     public void usarHabilidadeEspecial(Character alvo){
-        System.out.print("Usou Habilidade Especial:");
+        System.out.print("Usou Habilidade Especial: ");
     }
 }

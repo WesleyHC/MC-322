@@ -1,7 +1,7 @@
 package src;
 
 public class Satyr extends Hero {
-    int biomance;
+    private int biomance;
 
     public Satyr(String name, int pontosDeVida, int forca, int nivel, int experiencia, int biomance){
         super(name, pontosDeVida, forca, nivel, experiencia);
@@ -15,12 +15,11 @@ public class Satyr extends Hero {
 
     //Métodos
     public void atacar(Character alvo){
-        super.atacar(alvo, getForca());
+        super.atacar(alvo, this.getForca());
     }
 
     public void usarHabilidadeEspecial(Character alvo){
         super.usarHabilidadeEspecial(alvo);
-        System.out.print("Sátiro atacou" + alvo.getName());
-        setPontosDeVida(20);
+        System.out.println("Synthesis em " + alvo.getName());
     }
 }

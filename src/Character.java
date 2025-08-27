@@ -23,17 +23,17 @@ public class Character {
     }
 
     //setters
-    public void setPontosDeVida(int valor){
+    private void setPontosDeVida(int valor){
         pontosDeVida += valor;
     }
 
-    public void setForca(int valor){
+    private void setForca(int valor){
         forca += valor;
     }
 
     //Métodos
     public void receberDano(int dano){
-        pontosDeVida -= dano;
+        setPontosDeVida(-dano);
 
         if (pontosDeVida < 0)
             pontosDeVida = 0;
@@ -46,6 +46,7 @@ public class Character {
     }
 
     public void atacar(Character alvo, int valor){
-        alvo.setPontosDeVida(-valor); 
+        alvo.receberDano(valor); 
     }
+
 }
