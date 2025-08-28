@@ -46,7 +46,7 @@ public class Character {
         System.out.println("Força: " + forca);
     }
 
-    public void atacar(Character alvo, int valor){
+    public void atacar(Character alvo, int valor){ //Lógica geral para Ataque
         alvo.receberDano(valor); 
     }
 
