@@ -1,8 +1,10 @@
 package src;
 
 public class Satyr extends Hero {
+    //Atributos
     private int biomance;
 
+    //Construtor
     public Satyr(String name, int pontosDeVida, int forca, int nivel, int experiencia, int biomance){
         super(name, pontosDeVida, forca, nivel, experiencia);
         this.biomance = biomance;
@@ -14,12 +16,13 @@ public class Satyr extends Hero {
     }
 
     //Métodos
-    public void atacar(Character alvo){
-        super.atacar(alvo, this.getForca());
+    public void atacar(Character alvo){ //Ataque = Força + Biomance
+        super.atacar(alvo, (this.getForca()+biomance));
     }
 
-    public void usarHabilidadeEspecial(Character alvo){
+    public void usarHabilidadeEspecial(Character alvo){ //Se cura
         super.usarHabilidadeEspecial(alvo);
-        System.out.println("Synthesis em " + alvo.getName());
+        System.out.println("Synthesis");
+        this.receberDano(-biomance);
     }
 }
