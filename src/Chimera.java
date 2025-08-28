@@ -16,4 +16,10 @@ public class Chimera extends Monster {
     }
 
     //Métodos
+    public void atacar(Character alvo){
+        super.atacar(alvo, this.getForca());
+    }
+    public void receberDano(int dano){
+        super.receberDano(dano-intimidate);
+    }
 }

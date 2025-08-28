@@ -1,7 +1,7 @@
 package src;
 
 public class Harpy extends Monster {
-    //Atributo voar (ataca primeiro sempre)
+    //Atributo voar (chance de esquivar)
     private int flight; 
 
     //Construtor
@@ -16,4 +16,14 @@ public class Harpy extends Monster {
     }
 
     //Métodos
+    public void atacar(Character alvo){
+        super.atacar(alvo, this.getForca());
+    }
+    public void receberDano(int dano) {
+        if (Math.random()<0.25) {
+            System.out.println(this.getName() + "esquivou!");
+        } else {
+            super.receberDano(dano);
+        }
+    }
 }
