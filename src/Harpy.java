@@ -2,16 +2,16 @@ package src;
 
 public class Harpy extends Monster {
     //Atributo voar (chance de esquivar)
-    private int flight; 
+    private float flight; //0 a 100
 
     //Construtor
-    public Harpy(String name, int pontosDeVida, int forca, int xpConcedido, int flight){
+    public Harpy(String name, int pontosDeVida, int forca, int xpConcedido, float flight){
         super(name, pontosDeVida, forca, xpConcedido);
         this.flight = flight;
     }
 
     //Getters
-     public int getFlight(){
+     public float getFlight(){
         return flight;
     }
 
@@ -20,8 +20,8 @@ public class Harpy extends Monster {
         super.atacar(alvo, this.getForca());
     }
     public void receberDano(int dano) {
-        if (Math.random()<0.25) {
-            System.out.println(this.getName() + "esquivou!");
+        if ((100*Math.random())<flight) {
+            System.out.println(this.getName() + " esquivou!");
         } else {
             super.receberDano(dano);
         }

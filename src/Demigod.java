@@ -46,7 +46,7 @@ public class Demigod extends Hero {
                 break;
             case("Hades"):
                 super.atacar(alvo, divineAfinity);  
-                this.receberDano(divineAfinity);
+                this.receberDano(-divineAfinity);
                 System.out.println("BENÇÃO DE HADES");
                 break;
         }
