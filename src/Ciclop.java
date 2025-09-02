@@ -16,4 +16,14 @@ public class Ciclop extends Monster {
     }
 
     //Métodos
+    public void atacar(Character alvo) {
+        if (this.heavystrike) {
+            alvo.receberDano(this.getForca()*2);
+            this.heavystrike = false;
+        } else {
+            alvo.receberDano(this.getForca()*0);
+            System.out.println(this.getName() + " está fatigado");
+            this.heavystrike = true;
+        }
+    }
 }
