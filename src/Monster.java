@@ -17,6 +17,8 @@ public class Monster extends Character {
     //Métodos
     public void exibirStatus(){
         super.exibirStatus();
-        System.out.println("XP Concedido: " + xpConcedido);
+        if (this.getPontosDeVida() == 0) {
+            System.out.println("XP Concedido: " + xpConcedido);
+        }
     }
 }

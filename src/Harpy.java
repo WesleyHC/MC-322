@@ -16,12 +16,13 @@ public class Harpy extends Monster {
     }
 
     //Métodos
-    public void atacar(Character alvo){
+    public void atacar(Character alvo, int valor){
+        System.out.println(this.getName() + " ataca!");
         super.atacar(alvo, this.getForca());
     }
     public void receberDano(int dano) {
-        if ((100*Math.random())<flight) {
-            System.out.println(this.getName() + " esquivou!");
+        if ((100*Math.random()) < flight) {
+            System.out.println(this.getName() + " esquiva voando!");
         } else {
             super.receberDano(dano);
         }

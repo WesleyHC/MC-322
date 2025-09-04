@@ -34,6 +34,10 @@ public class Hero extends Character {
     }
 
     public void usarHabilidadeEspecial(Character alvo){
-        System.out.print("Usou Habilidade Especial: ");
+        System.out.print(this.getName() + " usa Habilidade Especial: ");
+    }
+    public void atacar(Character alvo, int valor) {
+        System.out.println(this.getName() + " ataca!");
+        super.atacar(alvo, this.getForca());
     }
 }

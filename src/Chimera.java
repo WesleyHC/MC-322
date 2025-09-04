@@ -1,13 +1,15 @@
 package src;
 
 public class Chimera extends Monster {
-    //Atributo intimidador (dano do heroi reduzido)
+    //Atributo intimidador (dano do inimigo reduzido)
     private int intimidate;
+    private boolean intimidate_msg;
 
     //Construtor
     public Chimera(String name, int pontosDeVida, int forca, int xpConcedido, int intimidate){
         super(name, pontosDeVida, forca, xpConcedido);
         this.intimidate = intimidate;
+        this.intimidate_msg = true;
     }
 
     //Getters
@@ -20,6 +22,10 @@ public class Chimera extends Monster {
         super.atacar(alvo, this.getForca());
     }
     public void receberDano(int dano){
-        super.receberDano(dano-intimidate);
+        if (intimidate_msg) {
+            System.out.println("O herói está intimidado por " + this.getName() + ", enfraquecendo seu ataque!");
+            intimidate_msg = false;
+        }
+        super.receberDano(dano - intimidate);
     }
 }

@@ -36,18 +36,17 @@ public class Character {
         setPontosDeVida(-dano);
 
         if (pontosDeVida < 0)
-            pontosDeVida = 0;
-        
+            pontosDeVida = 0;   
     }
 
     public void exibirStatus(){
-        System.out.println("Status de " + name);
+        System.out.println("\nStatus de " + name);
         System.out.print("Vida: " + pontosDeVida + " | ");
         System.out.println("Força: " + forca);
     }
 
     public void atacar(Character alvo, int valor){ //Lógica geral para Ataque
-        alvo.receberDano(valor); 
+        alvo.receberDano(valor);
     }
 
 // System.out.println("GAME OVER");

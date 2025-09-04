@@ -24,7 +24,7 @@ public class Demigod extends Hero {
 
     public void usarHabilidadeEspecial(Character alvo){ //Usa o poder concedido por um Deus aleatório
         super.usarHabilidadeEspecial(alvo);
-        System.out.println("God's Plan em " + alvo.getName());
+        System.out.println("Fúria Divina em " + alvo.getName());
         Random random = new Random();
         int deus = random.nextInt(5);
         switch(Gods[deus]){
