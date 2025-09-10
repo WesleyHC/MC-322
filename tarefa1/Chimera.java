@@ -1,4 +1,6 @@
-package src;
+package tarefa1;
+
+import tarefa2.Weapon;
 
 public class Chimera extends Monster {
     //Atributo intimidador (dano do inimigo reduzido)
@@ -6,8 +8,8 @@ public class Chimera extends Monster {
     private boolean intimidate_msg;
 
     //Construtor
-    public Chimera(String name, int pontosDeVida, int forca, int xpConcedido, int intimidate){
-        super(name, pontosDeVida, forca, xpConcedido);
+    public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate){
+        super(name, pontosDeVida, forca, arma, xpConcedido);
         this.intimidate = intimidate;
         this.intimidate_msg = true;
     }

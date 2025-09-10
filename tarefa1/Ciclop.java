@@ -1,12 +1,14 @@
-package src;
+package tarefa1;
+
+import tarefa2.Weapon;
 
 public class Ciclop extends Monster {
     //Atributo golpe pesado (danoso, porém lento, alternando o ataque entre os turnos)
     private boolean heavystrike;
 
     //Construtor
-    public Ciclop(String name, int pontosDeVida, int forca, int xpConcedido){
-        super(name, pontosDeVida, forca, xpConcedido);
+    public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido){
+        super(name, pontosDeVida, forca, arma, xpConcedido);
         this.heavystrike = true;
     }
 

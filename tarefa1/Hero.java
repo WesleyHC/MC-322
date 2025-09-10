@@ -1,14 +1,21 @@
-package src;
+package tarefa1;
+
+import tarefa2.Weapon;
+
 public class Hero extends Character {
     //Atributos
     private int nivel;
     private int experiencia;
+    private int expProximoNivel;
+    private float sorte;
 
     //Construtor
-    public Hero(String name, int pontosDeVida, int forca, int nivel, int experiencia){
-        super(name, pontosDeVida, forca);
+    public Hero(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte){
+        super(name, pontosDeVida, forca, arma);
         this.nivel = nivel;
         this.experiencia = experiencia;
+        this.expProximoNivel = expProximoNivel;
+        this.sorte = sorte;
     }
     //Getters
     public int getNivel(){
@@ -39,5 +46,11 @@ public class Hero extends Character {
     public void atacar(Character alvo, int valor) {
         System.out.println(this.getName() + " ataca!");
         super.atacar(alvo, this.getForca());
+    }
+
+    public void equiparArma(Weapon novaArma){
+        if (nivel>=novaArma.getMinNivel()){
+            arma = novaArma;
+        }
     }
 }

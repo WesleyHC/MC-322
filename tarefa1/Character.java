@@ -1,15 +1,20 @@
-package src;
+package tarefa1;
+
+import tarefa2.Weapon;
+
 public class Character {
     //Atributos
     private String name;
     private int pontosDeVida;
     private int forca;
+    protected Weapon arma;
     
     //Construtor
-    public Character(String name, int pontosDeVida, int forca){
+    public Character(String name, int pontosDeVida, int forca, Weapon arma){
         this.name = name;
         this.pontosDeVida = pontosDeVida;
         this.forca = forca;
+        this.arma = arma;
     }
     //getters
     public String getName(){

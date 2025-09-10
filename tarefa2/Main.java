@@ -1,13 +1,21 @@
-package src;
+package tarefa2;
+
+import tarefa1.Chimera;
+import tarefa1.Ciclop;
+import tarefa1.Demigod;
+import tarefa1.Harpy;
+import tarefa1.Hero;
+import tarefa1.Monster;
 
 public class Main {
     public static void main(String[] args){
-        Hero hero = new Demigod("Perseus", 100, 14, 5, 45, 20);
+        Weapon anaklusmo = new Weapon(15, 1);
+        Hero hero = new Demigod("Perseus", 100, 14, 5, 45, anaklusmo, 100, 30, 20);
         //Monster harpy = new Harpy("Polífemo", 100, 30, 10, 20);
         Monster[] Monstros = {
-            new Harpy("Ella", 20, 10, 15, 30),
-            new Ciclop("Polífemo", 30, 15, 25),
-            new Chimera("Ninaxander", 25, 12, 30, 10)
+            new Harpy("Ella", 20, 10, anaklusmo, 30, 10),
+            new Ciclop("Polífemo", 30, 15, anaklusmo, 20),
+            new Chimera("Ninaxander", 25, 12, anaklusmo, 30, 10)
         };
         //Mensagem de Introdução
         System.out.println(hero.getName() + " é um herói habilidoso(a), mas sente que seus feitos passam despercebidos pelos Deuses.");

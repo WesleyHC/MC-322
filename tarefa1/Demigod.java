@@ -1,5 +1,7 @@
-package src;
+package tarefa1;
 import java.util.Random;
+
+import tarefa2.Weapon;
 
 public class Demigod extends Hero {
     //Atributos
@@ -7,8 +9,8 @@ public class Demigod extends Hero {
     private String [] Gods = {"Zeus", "Poseidon", "Afrodite", "Ares", "Hades"};
 
     //Construtor
-    public Demigod(String name, int pontosDeVida, int forca, int nivel, int experiencia, int divineAfinity){
-        super(name, pontosDeVida, forca, nivel, experiencia);
+    public Demigod(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte, int divineAfinity){
+        super(name, pontosDeVida, forca, nivel, experiencia, arma, expProximoNivel, sorte);
         this.divineAfinity = divineAfinity;
     }
 

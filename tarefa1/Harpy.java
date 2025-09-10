@@ -1,12 +1,14 @@
-package src;
+package tarefa1;
+
+import tarefa2.Weapon;
 
 public class Harpy extends Monster {
     //Atributo voar (chance de esquivar)
     private float flight; //0 a 100
 
     //Construtor
-    public Harpy(String name, int pontosDeVida, int forca, int xpConcedido, float flight){
-        super(name, pontosDeVida, forca, xpConcedido);
+    public Harpy(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, float flight){
+        super(name, pontosDeVida, forca, arma, xpConcedido);
         this.flight = flight;
     }
 

@@ -1,12 +1,14 @@
-package src;
+package tarefa1;
+
+import tarefa2.Weapon;
 
 public class Satyr extends Hero {
     //Atributos
     private int biomance;
 
     //Construtor
-    public Satyr(String name, int pontosDeVida, int forca, int nivel, int experiencia, int biomance){
-        super(name, pontosDeVida, forca, nivel, experiencia);
+    public Satyr(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte, int biomance){
+        super(name, pontosDeVida, forca, nivel, experiencia, arma, expProximoNivel, sorte);
         this.biomance = biomance;
     }
 
