@@ -1,18 +1,29 @@
 package tarefa2;
 
+import java.util.ArrayList;
+import tarefa1.Monster;
+
 public class Level {
     //Atributos
     private int nivel;
     private String ambiente;
-    // Lista de Monstros -> Exemplo:
-    // Monster[] ListaMonsters = {
-    //         new Harpy("Ella", 20, 10, 15, 30),
-    //     };
+    private ArrayList<Monster> monstros;
 
-    // Métodos
-    public Level(int nivel, String ambiente){
+    // Construtor
+    public Level(int nivel, String ambiente, ArrayList<Monster> monstros){
         this.nivel = nivel;
         this.ambiente = ambiente;
-        //this.ListaMonsters = vetor
+        this.monstros = monstros;
+    }
+
+    //Getters
+    public int getNivel() {
+        return nivel;
+    }
+    public String getAmbiente() {
+        return ambiente;
+    }
+    public ArrayList<Monster> getMonstros() {
+        return monstros;
     }
 }

@@ -1,6 +1,6 @@
 package tarefa2;
 
-public class Weapon {
+public abstract class Weapon {
     //Atributos
     private int dano;
     private int minNivel;
@@ -16,5 +16,8 @@ public class Weapon {
         return minNivel;
     }
 
+    public int getDano(){
+        return dano;
+    }
     
 }

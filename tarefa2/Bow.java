@@ -1,11 +1,8 @@
 package tarefa2;
 
-public class Bow extends Weapon{
-    //Atributos
-    private int dist;
+public class Bow extends Weapon {
 
-    public Bow(int dano, int minNivel, int dist){
-        super(dano, minNivel);
-        this.dist = dist;
+    public Bow(){
+        super(15, 2);
     }
 }

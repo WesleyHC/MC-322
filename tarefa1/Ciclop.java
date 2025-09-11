@@ -1,5 +1,7 @@
 package tarefa1;
 
+import java.util.ArrayList;
+
 import tarefa2.Weapon;
 
 public class Ciclop extends Monster {
@@ -7,8 +9,8 @@ public class Ciclop extends Monster {
     private boolean heavystrike;
 
     //Construtor
-    public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido){
-        super(name, pontosDeVida, forca, arma, xpConcedido);
+    public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, ArrayList<Weapon> armas){
+        super(name, pontosDeVida, forca, arma, xpConcedido, armas);
         this.heavystrike = true;
     }
 
@@ -18,15 +20,18 @@ public class Ciclop extends Monster {
     }
 
     //Métodos
-    public void atacar(Character alvo, int forca) {
+    public void atacar(Character alvo) {
+        int dano;
         if (this.heavystrike) {
-            alvo.receberDano(this.getForca()*2);
+            dano = this.getForca()*2;
+            System.out.println(this.getName() +" executa um GOLPE PESADO!");
+            System.out.println("O ataque causa " + dano + " de dano em " + alvo.getName() + "!");
             this.heavystrike = false;
-            System.out.println(this.getName() + " executa um ataque poderoso");
         } else {
-            alvo.receberDano(this.getForca()*0);
-            System.out.println(this.getName() + " está fatigado!");
+            dano = 0;
+            System.out.println(this.getName() + " está fatigado do último golpe e não consegue atacar.");
             this.heavystrike = true;
         }
+        alvo.receberDano(dano);
     }
 }

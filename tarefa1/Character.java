@@ -2,7 +2,7 @@ package tarefa1;
 
 import tarefa2.Weapon;
 
-public class Character {
+public abstract class Character {
     //Atributos
     private String name;
     private int pontosDeVida;
@@ -28,11 +28,11 @@ public class Character {
     }
 
     //setters
-    private void setPontosDeVida(int valor){
+    protected void setPontosDeVida(int valor){
         pontosDeVida += valor;
     }
 
-    private void setForca(int valor){
+    protected void setForca(int valor){
         forca += valor;
     }
 
@@ -50,10 +50,5 @@ public class Character {
         System.out.println("Força: " + forca);
     }
 
-    public void atacar(Character alvo, int valor){ //Lógica geral para Ataque
-        alvo.receberDano(valor);
-    }
-
-// System.out.println("GAME OVER");
-// System.exit(1);    
+    public abstract void atacar(Character alvo); //Lógica geral para Ataque
 }

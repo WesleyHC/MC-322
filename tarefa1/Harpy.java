@@ -1,5 +1,7 @@
 package tarefa1;
 
+import java.util.ArrayList;
+
 import tarefa2.Weapon;
 
 public class Harpy extends Monster {
@@ -7,8 +9,8 @@ public class Harpy extends Monster {
     private float flight; //0 a 100
 
     //Construtor
-    public Harpy(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, float flight){
-        super(name, pontosDeVida, forca, arma, xpConcedido);
+    public Harpy(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, float flight, ArrayList<Weapon> armas){
+        super(name, pontosDeVida, forca, arma, xpConcedido, armas);
         this.flight = flight;
     }
 
@@ -18,14 +20,16 @@ public class Harpy extends Monster {
     }
 
     //Métodos
-    public void atacar(Character alvo, int valor){
-        System.out.println(this.getName() + " ataca!");
-        super.atacar(alvo, this.getForca());
+    public void atacar(Character alvo){
+        int dano = this.getForca(); 
+        System.out.println(this.getName() + " ataca, causando " + dano + " de dano em " + alvo.getName() + "!");
+        alvo.receberDano(dano);
     }
     public void receberDano(int dano) {
-        if ((100*Math.random()) < flight) {
-            System.out.println(this.getName() + " esquiva voando!");
+        if ((100*Math.random()) < this.flight) {
+            System.out.println(this.getName() + " voa agilmente e ESQUIVA do ataque!");
         } else {
+            System.out.println("O ataque ACERTA " + this.getName() + "!");
             super.receberDano(dano);
         }
     }

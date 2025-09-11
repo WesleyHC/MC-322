@@ -20,36 +20,46 @@ public class Demigod extends Hero {
     }
 
     //Métodos
-    public void atacar(Character alvo){ //Ataque = Força + Nível*10
-        super.atacar(alvo, (this.getForca()+getNivel()*3));
+    public void atacar(Character alvo){
+        int dano = this.getForca() + this.arma.getDano();
+        System.out.println(this.getName() + " ataca!");
+        System.out.println("O ataque causa " + dano + " de dano em " + alvo.getName() + "!");
+        alvo.receberDano(dano);
     }
 
     public void usarHabilidadeEspecial(Character alvo){ //Usa o poder concedido por um Deus aleatório
-        super.usarHabilidadeEspecial(alvo);
-        System.out.println("Fúria Divina em " + alvo.getName());
+        System.out.println(this.getName() + " usa a habilidade especial 'Fúria Divina'!");
         Random random = new Random();
         int deus = random.nextInt(5);
+        int dano;
         switch(Gods[deus]){
             case("Zeus"):
-                super.atacar(alvo, (this.getForca()+divineAfinity*2));
-                System.out.println("BENÇÃO DE ZEUS");
+                dano = this.getForca() + this.divineAfinity * 2 + this.arma.getDano();
+                System.out.println("BENÇÃO DE ZEUS!\nUm raio atinge " + alvo.getName() + " causando " + dano + " de dano!");
+                alvo.receberDano(dano);
                 break;
             case("Poseidon"):
-                super.atacar(alvo, (this.getForca()+divineAfinity*1));
-                System.out.println("BENÇÃO DE POSEIDON");
+                dano = this.getForca() + this.divineAfinity + this.arma.getDano();
+                System.out.println("BENÇÃO DE POSEIDON!\nUma onda esmaga " + alvo.getName() + " causando " + dano + " de dano!");
+                alvo.receberDano(dano);
                 break;
             case("Afrodite"):
-                super.atacar(alvo, (this.getForca()-10));
-                System.out.println("BENÇÃO DE AFRODITE");
+                int cura = this.getDivineAfinity() + (this.getNivel() * 2);
+                System.out.println("BENÇÃO DE AFRODITE!\nUma aura pura envolve " + this.getName() + ", fechando seus ferimentos!");
+                System.out.println(this.getName() + " recupera " + cura + " pontos de vida!");
+                this.receberDano(-cura);
                 break;
             case("Ares"): 
-                super.atacar(alvo, (5*this.getForca()));
-                System.out.println("BENÇÃO DE ARES");
+                dano = this.getForca() * 3 + this.arma.getDano();
+                System.out.println("BENÇÃO DE ARES!\nA fúria da guerra inspira um golpe devastador de " + dano + " de dano em " + alvo.getName());
+                alvo.receberDano(dano);
                 break;
-            case("Hades"):
-                super.atacar(alvo, divineAfinity);  
-                this.receberDano(-divineAfinity);
-                System.out.println("BENÇÃO DE HADES");
+            case("Hades"):  
+                dano = this.divineAfinity * 2 + this.arma.getDano();
+                System.out.println("BENÇÃO DE HADES!\nA energia vital de " + alvo.getName() + " é drenada!");
+                System.out.println(this.getName() + " causa " + dano + " de dano e se cura na mesma quantidade.");
+                alvo.receberDano(dano);
+                this.receberDano(-dano);
                 break;
         }
     }

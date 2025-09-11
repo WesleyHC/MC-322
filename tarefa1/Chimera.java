@@ -1,5 +1,7 @@
 package tarefa1;
 
+import java.util.ArrayList;
+
 import tarefa2.Weapon;
 
 public class Chimera extends Monster {
@@ -8,8 +10,8 @@ public class Chimera extends Monster {
     private boolean intimidate_msg;
 
     //Construtor
-    public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate){
-        super(name, pontosDeVida, forca, arma, xpConcedido);
+    public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate, ArrayList<Weapon> armas){
+        super(name, pontosDeVida, forca, arma, xpConcedido, armas);
         this.intimidate = intimidate;
         this.intimidate_msg = true;
     }
@@ -21,13 +23,21 @@ public class Chimera extends Monster {
 
     //Métodos
     public void atacar(Character alvo){
-        super.atacar(alvo, this.getForca());
+        int dano = this.getForca();
+        System.out.println(this.getName() + " ruge e ataca furiosamente!");
+        System.out.println("O ataque causa " + dano + " de dano em " + alvo.getName() + "!");
+        alvo.receberDano(dano);
     }
     public void receberDano(int dano){
         if (intimidate_msg) {
             System.out.println("O herói está intimidado por " + this.getName() + ", enfraquecendo seu ataque!");
             intimidate_msg = false;
         }
-        super.receberDano(dano - intimidate);
+        int damage = dano - this.intimidate;
+        if (damage < 0) {
+            damage = 0; //Para não curar caso fique negativo
+        }
+        System.out.println(this.getName() + " resiste ao golpe e sofre apenas " + damage + " de dano.");
+        super.receberDano(damage);
     }
 }

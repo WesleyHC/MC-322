@@ -2,7 +2,7 @@ package tarefa1;
 
 import tarefa2.Weapon;
 
-public class Hero extends Character {
+public abstract class Hero extends Character {
     //Atributos
     private int nivel;
     private int experiencia;
@@ -26,11 +26,21 @@ public class Hero extends Character {
     }
 
     //Métodos
+    private void subirdeNivel() {
+        this.nivel += 1;
+        super.setForca(5);
+        super.setPontosDeVida(10);
+        System.out.println("==============================================");
+        System.out.println(this.getName() + " DE NÍVEL!");
+        System.out.println("-=============================================");
+        this.experiencia -= this.expProximoNivel;
+        this.expProximoNivel *= 2; 
+        
+    }
     public void ganharExperiencia(int xp){
-        experiencia += xp;
-        if (experiencia>=50){
-            nivel += 1;
-            experiencia -= 50;
+        this.experiencia += xp;
+        while (this.experiencia >= this.expProximoNivel){
+            subirdeNivel();
         }
     }
 
@@ -40,16 +50,10 @@ public class Hero extends Character {
         System.out.println("Experiência: " + experiencia);
     }
 
-    public void usarHabilidadeEspecial(Character alvo){
-        System.out.print(this.getName() + " usa Habilidade Especial: ");
-    }
-    public void atacar(Character alvo, int valor) {
-        System.out.println(this.getName() + " ataca!");
-        super.atacar(alvo, this.getForca());
-    }
+    public abstract void usarHabilidadeEspecial(Character alvo);
 
     public void equiparArma(Weapon novaArma){
-        if (nivel>=novaArma.getMinNivel()){
+        if (nivel >= novaArma.getMinNivel()){ 
             arma = novaArma;
         }
     }

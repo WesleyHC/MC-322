@@ -19,12 +19,17 @@ public class Satyr extends Hero {
 
     //Métodos
     public void atacar(Character alvo){ //Ataque = Força + Biomance
-        super.atacar(alvo, (this.getForca()+biomance));
+        int dano = this.getForca() + biomance + this.arma.getDano();
+        System.out.println(this.getName() + " usa sua conexão com a natureza para atacar!");
+        System.out.println("O ataque causa " + dano + " de dano em " + alvo.getName() + "!");
+        alvo.receberDano(dano);
+
     }
 
     public void usarHabilidadeEspecial(Character alvo){ //Se cura
-        super.usarHabilidadeEspecial(alvo);
-        System.out.println("Synthesis");
-        this.receberDano(-biomance);
+        int cura = this.biomance;
+        System.out.println(this.getName() + " usa a habilidade especial 'Síntese'!");
+        System.out.println(this.getName() + " absorve energia vital e se cura em " + cura + " pontos de vida!");
+        this.receberDano(-cura);
     }
 }
