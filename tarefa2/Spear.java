@@ -4,7 +4,7 @@ public class Spear extends Weapon {
     private String nome;
     public Spear(){
         super(10, 1);
-        this.nome = "Lanca";
+        this.nome = "Lança";
     }
 
     public String toString() {

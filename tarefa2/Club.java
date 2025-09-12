@@ -1,6 +1,6 @@
 package tarefa2;
 
-public class Club extends Weapon { //clava
+public class Club extends Weapon { //clava / porrete
     private String nome;
     public Club(){
         super(25, 3);

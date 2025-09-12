@@ -45,7 +45,7 @@ public abstract class Monster extends Character {
         Random random = new Random();
         float rare = new Random().nextFloat();
         if (rare<=luck){
-            System.out.println("A arma apresenta um poder maior do que o nornal! Dizem que a arma corresponde a grandiosidade do guerreiro!");
+            System.out.println("A arma apresenta um poder maior do que o normal! Dizem que a arma corresponde a grandiosidade do guerreiro!");
             int arma = random.nextInt(armasRaras.size());
             return armasRaras.get(arma);
         } else {

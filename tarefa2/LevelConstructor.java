@@ -22,23 +22,20 @@ public class LevelConstructor {
                 int xpBonus = 25*nivelDolvl;
                 
                 if (j == 0) {
-                    Ciclop ciclope = new Ciclop("Sérgio, o Ciclope", 40 + vidaBonus, 15 + forcaBonus, new Club(), 15 + xpBonus);
+                    Ciclop ciclope = new Ciclop("Ciclope", 40 + vidaBonus, 15 + forcaBonus, new Club(), 15 + xpBonus);
                     ciclope.addArmaComum(new Sword());
                     ciclope.addArmaRara(new Club());
                     monstrosDolvl.add(ciclope);
-                    //monstrosDolvl.add(new Ciclop("Sérgio, o Ciclope", 40 + vidaBonus, 15 + forcaBonus, new Club(), 15 + xpBonus, armas_ciclop));
                 } else if (j == 1) {
-                    Harpy harpia = new Harpy("Ana, a Harpia", 30 + vidaBonus, 5 + forcaBonus, new Bow(), 10 + xpBonus, 35);
+                    Harpy harpia = new Harpy("Harpia", 30 + vidaBonus, 5 + forcaBonus, new Bow(), 10 + xpBonus, 35);
                     harpia.addArmaComum(new Bow());
                     harpia.addArmaRara(new Sword());
                     monstrosDolvl.add(harpia);
-                    //monstrosDolvl.add(new Harpy("Ana, a Harpia", 30 + vidaBonus, 5 + forcaBonus, new Bow(), 10 + xpBonus, 35, armas_harpy));
                 } else {
-                    Chimera quimera = new Chimera("Ninaxander, a Quimera", 45 + vidaBonus, 10 + forcaBonus, new Sword(), 20 + xpBonus + 5, 10);
+                    Chimera quimera = new Chimera("Quimera", 45 + vidaBonus, 10 + forcaBonus, new Sword(), 20 + xpBonus + 5, 10);
                     quimera.addArmaComum(new Spear());
                     quimera.addArmaRara(new Sword());
                     monstrosDolvl.add(quimera);
-                    //monstrosDolvl.add(new Chimera("Ninaxander, a Quimera", 45 + vidaBonus, 10 + forcaBonus, new Sword(), 20 + xpBonus + 5, 10, armas_chimera));
                 }
             }
             

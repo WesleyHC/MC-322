@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Sword Espada = new Sword();
-        Hero hero = new Demigod("Perseus", 600, 7, 1, 0, Espada, 100, 0.35f , 20);
+        Hero hero = new Demigod("Perseus", 420, 7, 1, 0, Espada, 100, 0.35f , 20);
         ArrayList<Level> levels = LevelConstructor.gerarFases(3);
         
         //Mensagem de Introdução
