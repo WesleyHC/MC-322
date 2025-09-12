@@ -1,5 +1,7 @@
 package tarefa1;
 
+import java.util.Random;
+
 import tarefa2.Weapon;
 
 public class Satyr extends Hero {
@@ -28,8 +30,17 @@ public class Satyr extends Hero {
 
     public void usarHabilidadeEspecial(Character alvo){ //Se cura
         int cura = this.biomance;
+        float crit = new Random().nextFloat();
+        boolean AE = false;
+        if (crit <= this.getSorte()) {
+            AE = true;
+            System.out.println("Os espíritos da natureza favorecem " + this.getName() + "! Sua cura foi fortalecida");
+        }
         System.out.println(this.getName() + " usa a habilidade especial 'Síntese'!");
         System.out.println(this.getName() + " absorve energia vital e se cura em " + cura + " pontos de vida!");
+        if (AE){
+            cura *= 2;
+        }
         this.receberDano(-cura);
     }
 }

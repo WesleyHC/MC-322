@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Sword Espada = new Sword();
-        Hero hero = new Demigod("Perseus", 100, 7, 1, 0, Espada, 100, 0.4f, 20);
+        Hero hero = new Demigod("Perseus", 600, 7, 1, 0, Espada, 100, 0.35f , 20);
         ArrayList<Level> levels = LevelConstructor.gerarFases(3);
         
         //Mensagem de Introdução
@@ -20,11 +20,14 @@ public class Main {
         for (Level lvl : levels) { //For Monstros
             if (lvl.getNivel() == 1) {
                 System.out.println("\n" + lvl.getAmbiente());
+                lvl.LevelDescription(lvl.getAmbiente());
                 System.out.println("Seu caminho é bloqueado por uma figura ameaçadora. O primeiro guardião se revela...");
             } else if (lvl.getNivel() == 2) {
                 System.out.println("\nO caminho agora está livre. " + hero.getName() + " avança para " + lvl.getAmbiente() + ".");
+                lvl.LevelDescription(lvl.getAmbiente());
             } else {
                 System.out.println("\nA jornada continua para " + lvl.getAmbiente() + "...");
+                lvl.LevelDescription(lvl.getAmbiente());
                 System.out.println("Das sombras, emerge o desafio final...");
             }
             
@@ -59,9 +62,12 @@ public class Main {
                         System.exit(1);  
                 }
 
-                //Verificação da morte do Monstro e da Experiência concedida
+                //Verificação da morte do Monstro e da Experiência concedido
                 if (monstro.getPontosDeVida() == 0){
                     System.out.println("\n" + monstro.getName() + " é derrotado(a)");
+                    Weapon arma_atual = monstro.largarArma(hero.getSorte());
+                    System.out.println(monstro.getName() + " derrubou " + arma_atual + "!");
+                    hero.equiparArma(arma_atual);
                     hero.ganharExperiencia(monstro.getXpConcedido());
                 }
             }

@@ -20,4 +20,9 @@ public abstract class Weapon {
         return dano;
     }
     
+    //Setters
+    public void setDano(int valor){
+        this.dano += dano;
+    }
+    
 }

@@ -26,6 +26,10 @@ public abstract class Character {
     public int getForca(){
         return forca;
     }
+    
+    public Weapon getArma(){
+        return arma;
+    }
 
     //setters
     protected void setPontosDeVida(int valor){

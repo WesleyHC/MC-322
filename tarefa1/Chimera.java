@@ -1,7 +1,5 @@
 package tarefa1;
 
-import java.util.ArrayList;
-
 import tarefa2.Weapon;
 
 public class Chimera extends Monster {
@@ -10,8 +8,8 @@ public class Chimera extends Monster {
     private boolean intimidate_msg;
 
     //Construtor
-    public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate, ArrayList<Weapon> armas){
-        super(name, pontosDeVida, forca, arma, xpConcedido, armas);
+    public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate){
+        super(name, pontosDeVida, forca, arma, xpConcedido);
         this.intimidate = intimidate;
         this.intimidate_msg = true;
     }

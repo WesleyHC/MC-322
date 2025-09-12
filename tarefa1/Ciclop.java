@@ -1,7 +1,5 @@
 package tarefa1;
 
-import java.util.ArrayList;
-
 import tarefa2.Weapon;
 
 public class Ciclop extends Monster {
@@ -9,8 +7,8 @@ public class Ciclop extends Monster {
     private boolean heavystrike;
 
     //Construtor
-    public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, ArrayList<Weapon> armas){
-        super(name, pontosDeVida, forca, arma, xpConcedido, armas);
+    public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido){
+        super(name, pontosDeVida, forca, arma, xpConcedido);
         this.heavystrike = true;
     }
 

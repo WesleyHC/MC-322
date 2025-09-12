@@ -25,13 +25,17 @@ public abstract class Hero extends Character {
         return experiencia;
     }
 
+    public float getSorte() {
+        return this.sorte;
+    }
+    
     //Métodos
     private void subirdeNivel() {
         this.nivel += 1;
         super.setForca(5);
         super.setPontosDeVida(10);
         System.out.println("==============================================");
-        System.out.println(this.getName() + " DE NÍVEL!");
+        System.out.println(this.getName() + " SUBIU DE NÍVEL!");
         System.out.println("-=============================================");
         this.experiencia -= this.expProximoNivel;
         this.expProximoNivel *= 2; 
@@ -48,13 +52,18 @@ public abstract class Hero extends Character {
         super.exibirStatus();
         System.out.print("Nível: " + nivel + " | ");
         System.out.println("Experiência: " + experiencia);
+        System.out.print("Sorte Divina: " + sorte + " | ");
+        System.out.println("Arma Equipada: " + this.getArma());
     }
 
     public abstract void usarHabilidadeEspecial(Character alvo);
 
     public void equiparArma(Weapon novaArma){
-        if (nivel >= novaArma.getMinNivel()){ 
-            arma = novaArma;
+        if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
+            this.arma = novaArma;
+            System.out.println(this.getName() + " equipou " + novaArma);
+        } else {
+            System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma);
         }
     }
 }

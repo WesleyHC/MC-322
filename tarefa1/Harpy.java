@@ -1,7 +1,5 @@
 package tarefa1;
 
-import java.util.ArrayList;
-
 import tarefa2.Weapon;
 
 public class Harpy extends Monster {
@@ -9,8 +7,8 @@ public class Harpy extends Monster {
     private float flight; //0 a 100
 
     //Construtor
-    public Harpy(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, float flight, ArrayList<Weapon> armas){
-        super(name, pontosDeVida, forca, arma, xpConcedido, armas);
+    public Harpy(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, float flight){
+        super(name, pontosDeVida, forca, arma, xpConcedido);
         this.flight = flight;
     }
 
