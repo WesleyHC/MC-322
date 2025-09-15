@@ -1,15 +1,20 @@
-package src;
-public class Character {
+package tarefa1;
+
+import tarefa2.Weapon;
+
+public abstract class Character {
     //Atributos
     private String name;
     private int pontosDeVida;
     private int forca;
+    protected Weapon arma;
     
     //Construtor
-    public Character(String name, int pontosDeVida, int forca){
+    public Character(String name, int pontosDeVida, int forca, Weapon arma){
         this.name = name;
         this.pontosDeVida = pontosDeVida;
         this.forca = forca;
+        this.arma = arma;
     }
     //getters
     public String getName(){
@@ -21,13 +26,17 @@ public class Character {
     public int getForca(){
         return forca;
     }
+    
+    public Weapon getArma(){
+        return arma;
+    }
 
     //setters
-    private void setPontosDeVida(int valor){
+    protected void setPontosDeVida(int valor){
         pontosDeVida += valor;
     }
 
-    private void setForca(int valor){
+    protected void setForca(int valor){
         forca += valor;
     }
 
@@ -45,10 +54,5 @@ public class Character {
         System.out.println("Força: " + forca);
     }
 
-    public void atacar(Character alvo, int valor){ //Lógica geral para Ataque
-        alvo.receberDano(valor);
-    }
-
-// System.out.println("GAME OVER");
-// System.exit(1);    
+    public abstract void atacar(Character alvo); //Lógica geral para Ataque
 }
