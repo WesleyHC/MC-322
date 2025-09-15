@@ -48,6 +48,17 @@ public abstract class Character {
             pontosDeVida = 0;   
     }
 
+    public void receberCura(int cura){
+        setPontosDeVida(cura);
+
+        if (pontosDeVida < 0)
+            pontosDeVida = 0;   
+    }
+
+    public boolean isAlive(){
+        return (this.pontosDeVida>0);
+    }
+
     public void exibirStatus(){
         System.out.println("\nStatus de " + name);
         System.out.print("Vida: " + pontosDeVida + " | ");
