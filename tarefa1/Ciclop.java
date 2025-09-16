@@ -1,6 +1,9 @@
 package tarefa1;
 
 import tarefa2.Weapon;
+import tarefa3.AcaoDeCombate;
+import tarefa3.BasicAtk;
+import tarefa3.Combatente;
 
 public class Ciclop extends Monster {
     //Atributo golpe pesado (danoso, porém lento, alternando o ataque entre os turnos)
@@ -10,6 +13,7 @@ public class Ciclop extends Monster {
     public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido){
         super(name, pontosDeVida, forca, arma, xpConcedido);
         this.heavystrike = true;
+        adicionarAcao(new BasicAtk());
     }
 
     //Getters

@@ -1,13 +1,19 @@
 package tarefa1;
 
-import tarefa2.Weapon;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Character {
+import tarefa2.Weapon;
+import tarefa3.AcaoDeCombate;
+import tarefa3.Combatente;
+
+public abstract class Character implements Combatente{
     //Atributos
     private String name;
     private int pontosDeVida;
     private int forca;
     protected Weapon arma;
+    protected List<AcaoDeCombate> acoes;
     
     //Construtor
     public Character(String name, int pontosDeVida, int forca, Weapon arma){
@@ -15,6 +21,7 @@ public abstract class Character {
         this.pontosDeVida = pontosDeVida;
         this.forca = forca;
         this.arma = arma;
+        this.acoes = new ArrayList<>();
     }
     //getters
     public String getName(){
@@ -43,16 +50,19 @@ public abstract class Character {
     //Métodos
     public void receberDano(int dano){
         setPontosDeVida(-dano);
-
+        System.out.println(this.name + " recebeu" + dano + " de dano!");
         if (pontosDeVida < 0)
             pontosDeVida = 0;   
     }
 
     public void receberCura(int cura){
         setPontosDeVida(cura);
+        System.out.println(this.name + " curou-se em" + cura + " de vida!");
+    }
 
-        if (pontosDeVida < 0)
-            pontosDeVida = 0;   
+    public void receberForca(int forca){
+        setForca(forca);
+        System.out.println(this.name + "ficou mais forte em " + forca + "pontos!");
     }
 
     public boolean isAlive(){
@@ -65,5 +75,9 @@ public abstract class Character {
         System.out.println("Força: " + forca);
     }
 
-    public abstract void atacar(Character alvo); //Lógica geral para Ataque
+    public abstract AcaoDeCombate escolherAcao(Combatente alvo);
+
+    protected void adicionarAcao(AcaoDeCombate novaAcao) {
+        this.acoes.add(novaAcao);
+    }
 }

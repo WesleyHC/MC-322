@@ -1,6 +1,10 @@
 package tarefa1;
 
+import java.util.Random;
+
 import tarefa2.Weapon;
+import tarefa3.AcaoDeCombate;
+import tarefa3.Combatente;
 
 public abstract class Hero extends Character {
     //Atributos
@@ -8,6 +12,7 @@ public abstract class Hero extends Character {
     private int experiencia;
     private int expProximoNivel;
     private float sorte;
+    private Random random = new Random();
 
     //Construtor
     public Hero(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte){
@@ -56,8 +61,6 @@ public abstract class Hero extends Character {
         System.out.println("Arma Equipada: " + this.getArma());
     }
 
-    public abstract void usarHabilidadeEspecial(Character alvo);
-
     public void equiparArma(Weapon novaArma){
         if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
             this.arma = novaArma;
@@ -66,4 +69,9 @@ public abstract class Hero extends Character {
             System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma);
         }
     }
+
+    public AcaoDeCombate escolherAcao(Combatente alvo) {
+        return acoes.get(random.nextInt(acoes.size()));
+    }
+
 }

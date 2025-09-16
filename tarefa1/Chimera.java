@@ -1,6 +1,7 @@
 package tarefa1;
 
 import tarefa2.Weapon;
+import tarefa3.BasicAtk;
 
 public class Chimera extends Monster {
     //Atributo intimidador (dano do inimigo reduzido)
@@ -12,6 +13,7 @@ public class Chimera extends Monster {
         super(name, pontosDeVida, forca, arma, xpConcedido);
         this.intimidate = intimidate;
         this.intimidate_msg = true;
+        adicionarAcao(new BasicAtk());
     }
 
     //Getters
@@ -20,12 +22,6 @@ public class Chimera extends Monster {
     }
 
     //Métodos
-    public void atacar(Character alvo){
-        int dano = this.getForca();
-        System.out.println(this.getName() + " ruge e ataca furiosamente!");
-        System.out.println("O ataque causa " + dano + " de dano em " + alvo.getName() + "!");
-        alvo.receberDano(dano);
-    }
     public void receberDano(int dano){
         if (intimidate_msg) {
             System.out.println("O herói está intimidado por " + this.getName() + ", enfraquecendo seu ataque!");
@@ -38,4 +34,10 @@ public class Chimera extends Monster {
         System.out.println(this.getName() + " resiste ao golpe e sofre apenas " + damage + " de dano.");
         super.receberDano(damage);
     }
+
+    @Override
+    public String droparLoot() {
+        
+    }
+
 }

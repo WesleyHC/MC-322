@@ -3,12 +3,15 @@ package tarefa1;
 import java.util.ArrayList;
 import java.util.Random;
 import tarefa2.Weapon;
+import tarefa3.AcaoDeCombate;
+import tarefa3.Combatente;
 
 public abstract class Monster extends Character {
     //Atributos
     private int xpConcedido;
     private ArrayList<Weapon> armasComuns;
     private ArrayList<Weapon> armasRaras;
+    private Random random = new Random();
 
     //Construtor
     public Monster(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido) {
@@ -54,4 +57,9 @@ public abstract class Monster extends Character {
             return armasComuns.get(arma);
     }
 }
+    public AcaoDeCombate escolherAcao(Combatente alvo) {
+         return acoes.get(random.nextInt(acoes.size()));
+    }
+
+    public abstract String droparLoot();
 }
