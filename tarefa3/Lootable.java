@@ -1,5 +1,5 @@
 package tarefa3;
 
 public interface Lootable {
-    Item droparLoot();
+    public Item droparLoot();
 }

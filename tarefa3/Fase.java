@@ -3,7 +3,7 @@ package tarefa3;
 import tarefa1.Hero;
 
 public interface Fase {
-    void iniciar(Hero heroi);
-    boolean isDone();
-    String getAmbiente();
+    public void iniciar(Hero heroi);
+    public boolean isDone();
+    public String getAmbiente();
 }

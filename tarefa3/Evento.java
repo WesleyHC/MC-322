@@ -1,6 +1,6 @@
 package tarefa3;
 
 public interface Evento {
-    boolean Trigger();
-    void start();
+    public boolean Trigger();
+    public void start();
 }

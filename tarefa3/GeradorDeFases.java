@@ -1,7 +1,8 @@
 package tarefa3;
 
-import java.util.List;
+import java.util.ArrayList;
+import tarefa2.Level;
 
 public interface GeradorDeFases {
-    List<Fase> generate(int quantidadeDeFases);
+    public ArrayList<Level> gerarFases(int nFases);
 }
