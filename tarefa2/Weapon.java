@@ -1,6 +1,8 @@
 package tarefa2;
 
-public abstract class Weapon {
+import tarefa3.Item;
+
+public abstract class Weapon implements Item{
     //Atributos
     private int dano;
     private int minNivel;

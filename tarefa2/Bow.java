@@ -1,15 +1,15 @@
 package tarefa2;
 
 public class Bow extends Weapon {
-    private String nome;
+    private String name;
     public Bow(){
         super(15, 2);
-        this.nome = "Arco";
+        this.name = "Arco";
     }
 
 
-    public String toString() {
-        return this.nome; // Retorna o nome da arma
+    public String getName() {
+        return this.name; // Retorna o nome da arma
     }
 }
 
