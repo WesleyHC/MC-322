@@ -1,13 +1,21 @@
 package tarefa3;
 
+import java.util.ArrayList;
+
 import tarefa1.Hero;
+import tarefa1.Monster;
 
 public class FaseDeCombate implements Fase{
-
+    private Hero heroi;
+    private TipoCenario cenario;
+    private ArrayList<Monster> monstrosDolvl = new ArrayList<>();
+    
+    public FaseDeCombate(ArrayList<Monster> monstrosDoLvl, TipoCenario cenario){
+        this.cenario = cenario;
+    }
     @Override
     public void iniciar(Hero heroi) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iniciar'");
+        this.heroi = heroi;
     }
 
     @Override
@@ -17,9 +25,9 @@ public class FaseDeCombate implements Fase{
     }
 
     @Override
-    public String getAmbiente() {
+    public TipoCenario getTipoDeCenario() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAmbiente'");
+        throw new UnsupportedOperationException("Unimplemented method 'getTipoDeCenario'");
     }
     
 }
