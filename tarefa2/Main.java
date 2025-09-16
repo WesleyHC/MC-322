@@ -65,8 +65,6 @@ public class Main {
                 //Verificação da morte do Monstro e da Experiência concedido
                 if (monstro.getPontosDeVida() == 0){
                     System.out.println("\n" + monstro.getName() + " é derrotado(a)");
-                    Weapon arma_atual = monstro.largarArma(hero.getSorte());
-                    System.out.println(monstro.getName() + " derrubou " + arma_atual + "!");
                     hero.equiparArma(arma_atual);
                     hero.ganharExperiencia(monstro.getXpConcedido());
                 }
