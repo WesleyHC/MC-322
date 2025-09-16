@@ -1,9 +1,11 @@
 package tarefa2;
 
 import tarefa1.*;
+import tarefa3.GeradorDeFases;
+
 import java.util.ArrayList;
 
-public class LevelConstructor {
+public class LevelConstructor implements GeradorDeFases{
 
     public static ArrayList<Level> gerarFases(int nFases) {
         ArrayList<Level> levels = new ArrayList<>();

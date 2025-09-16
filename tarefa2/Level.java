@@ -1,9 +1,12 @@
 package tarefa2;
 
 import java.util.ArrayList;
-import tarefa1.Monster;
 
-public class Level {
+import tarefa1.Hero;
+import tarefa1.Monster;
+import tarefa3.Fase;
+
+public class Level implements Fase{
     //Atributos
     private int nivel;
     private String ambiente;
@@ -39,5 +42,17 @@ public class Level {
                 System.out.println("As terras por onde os espíritos vagam sem rumo, o plano onde todos os seres buscam eternamente seu destino final. Um espaço sustentado meramente pelos sonhos e sentimentos daqueles que já não mais vivem. Os temerários Campos da Perdição");
                 break;
         }
+    }
+
+    @Override
+    public void iniciar(Hero heroi) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'iniciar'");
+    }
+
+    @Override
+    public boolean isDone() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isDone'");
     }
 }
