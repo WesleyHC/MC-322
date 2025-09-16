@@ -1,7 +1,13 @@
 package tarefa1;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import tarefa2.Weapon;
 import tarefa3.BasicAtk;
+import tarefa3.Item;
+import tarefa3.Rest;
 
 public class Chimera extends Monster {
     //Atributo intimidador (dano do inimigo reduzido)
@@ -14,6 +20,7 @@ public class Chimera extends Monster {
         this.intimidate = intimidate;
         this.intimidate_msg = true;
         adicionarAcao(new BasicAtk());
+        adicionarAcao(new Rest());
     }
 
     //Getters
@@ -36,8 +43,16 @@ public class Chimera extends Monster {
     }
 
     @Override
-    public String droparLoot() {
-        
+    public List<Item> droparLoot(Hero heroi) {
+        Random random = new Random();
+        List<Item> drops = new ArrayList<>();
+
+        int money = random.nextInt(50);
+        heroi.setDracmas(money);
+
+        drops.add(largarArma(heroi.getSorte()));
+
+        return drops;
     }
 
 }

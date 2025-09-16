@@ -12,6 +12,7 @@ public abstract class Hero extends Character {
     private int experiencia;
     private int expProximoNivel;
     private float sorte;
+    private int dracmas;
     private Random random = new Random();
 
     //Construtor
@@ -21,6 +22,7 @@ public abstract class Hero extends Character {
         this.experiencia = experiencia;
         this.expProximoNivel = expProximoNivel;
         this.sorte = sorte;
+        this.dracmas = 0;
     }
     //Getters
     public int getNivel(){
@@ -32,6 +34,10 @@ public abstract class Hero extends Character {
 
     public float getSorte() {
         return this.sorte;
+    }
+    //Setters 
+    public void setDracmas(int valor) {
+        dracmas += valor;
     }
     
     //Métodos
@@ -59,6 +65,7 @@ public abstract class Hero extends Character {
         System.out.println("Experiência: " + experiencia);
         System.out.print("Sorte Divina: " + sorte + " | ");
         System.out.println("Arma Equipada: " + this.getArma());
+        System.out.println("Dracmas atuais: " + this.dracmas);
     }
 
     public void equiparArma(Weapon novaArma){

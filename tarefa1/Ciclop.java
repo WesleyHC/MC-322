@@ -1,9 +1,13 @@
 package tarefa1;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import tarefa2.Weapon;
-import tarefa3.AcaoDeCombate;
 import tarefa3.BasicAtk;
-import tarefa3.Combatente;
+import tarefa3.Item;
+import tarefa3.Rest;
 
 public class Ciclop extends Monster {
     //Atributo golpe pesado (danoso, porém lento, alternando o ataque entre os turnos)
@@ -14,6 +18,7 @@ public class Ciclop extends Monster {
         super(name, pontosDeVida, forca, arma, xpConcedido);
         this.heavystrike = true;
         adicionarAcao(new BasicAtk());
+        adicionarAcao(new Rest());
     }
 
     //Getters
@@ -35,5 +40,18 @@ public class Ciclop extends Monster {
             this.heavystrike = true;
         }
         alvo.receberDano(dano);
+    }
+
+    @Override
+    public List<Item> droparLoot(Hero heroi) {
+        Random random = new Random();
+        List<Item> drops = new ArrayList<>();
+
+        int money = random.nextInt(50);
+        heroi.setDracmas(money);
+
+        drops.add(largarArma(heroi.getSorte()));
+
+        return drops;
     }
 }
