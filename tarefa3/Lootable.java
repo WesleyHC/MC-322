@@ -5,5 +5,5 @@ import java.util.List;
 import tarefa1.Hero;
 
 public interface Lootable {
-    public List<Item> droparLoot(Hero heroi);
+    List<Item> droparLoot(Hero heroi);
 }
