@@ -1,10 +1,12 @@
 package tarefa1;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import tarefa2.Weapon;
 import tarefa3.AcaoDeCombate;
 import tarefa3.Combatente;
+import tarefa3.Item;
 
 public abstract class Hero extends Character {
     //Atributos
@@ -14,6 +16,7 @@ public abstract class Hero extends Character {
     private float sorte;
     private int dracmas;
     private Random random = new Random();
+    private ArrayList<Item> Inventario = new ArrayList<>();
 
     //Construtor
     public Hero(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte){
@@ -38,6 +41,14 @@ public abstract class Hero extends Character {
     //Setters 
     public void setDracmas(int valor) {
         dracmas += valor;
+    }
+
+    public void setSorte(float valor){
+        sorte += valor;
+
+        if (sorte < 0){
+            sorte = 0;
+        }
     }
     
     //Métodos
@@ -68,12 +79,17 @@ public abstract class Hero extends Character {
         System.out.println("Dracmas atuais: " + this.dracmas);
     }
 
-    public void equiparArma(Weapon novaArma){
-        if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
+    public void equipar(Item novoItem){
+        if (novoItem instanceof Weapon){
+            Weapon novaArma = (Weapon)novoItem;
+            if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
             this.arma = novaArma;
             System.out.println(this.getName() + " equipou " + novaArma);
         } else {
             System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma);
+        }
+        } else {
+            Inventario.add(novoItem);
         }
     }
 
