@@ -1,7 +1,5 @@
 package tarefa1;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import tarefa2.Weapon;
@@ -43,14 +41,13 @@ public class Chimera extends Monster {
     }
 
     @Override
-    public List<Item> droparLoot(Hero heroi) {
+    public Item droparLoot(Hero heroi) {
         Random random = new Random();
-        List<Item> drops = new ArrayList<>();
+        Item drops = largarArma(heroi.getSorte());
 
         int money = random.nextInt(50);
         heroi.setDracmas(money);
 
-        drops.add(largarArma(heroi.getSorte()));
 
         return drops;
     }

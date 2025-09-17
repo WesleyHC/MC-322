@@ -1,7 +1,6 @@
 package tarefa1;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import tarefa2.Weapon;
 import tarefa3.AcaoDeCombate;
@@ -64,5 +63,5 @@ public abstract class Monster extends Character implements Lootable{
          return acoes.get(random.nextInt(acoes.size()));
     }
 
-    public abstract List<Item> droparLoot(Hero heroi);
+    public abstract Item droparLoot(Hero heroi);
 }
