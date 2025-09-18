@@ -2,32 +2,49 @@ package tarefa3;
 
 import java.util.ArrayList;
 
-import tarefa1.Hero;
-import tarefa1.Monster;
+import tarefa1.*;
 
-public class FaseDeCombate implements Fase{
-    private Hero heroi;
+public class FaseDeCombate implements Fase {
+    //Atributos
+    private int nivel;
     private TipoCenario cenario;
-    private ArrayList<Monster> monstrosDolvl = new ArrayList<>();
+    private ArrayList<Monster> monstrosDolvl;
     
-    public FaseDeCombate(ArrayList<Monster> monstrosDoLvl, TipoCenario cenario){
+    //Construtor
+    public FaseDeCombate(int nivel, ArrayList<Monster> monstrosDolvl, TipoCenario cenario){
+        this.nivel = nivel;
         this.cenario = cenario;
+        this.monstrosDolvl = monstrosDolvl;
     }
     @Override
     public void iniciar(Hero heroi) {
-        this.heroi = heroi;
+        System.out.println(this.cenario.getDescricao());
+        System.out.println("\n=================|" + this.cenario.getName() + "|===================");
+        this.cenario.Effect(heroi);
     }
 
     @Override
     public boolean isDone() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isDone'");
+        for (Monster monstro : this.monstrosDolvl) {
+            if (monstro.isAlive()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Getters
+    public int getNivel(){
+        return nivel;
     }
 
     @Override
     public TipoCenario getTipoDeCenario() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTipoDeCenario'");
+        return this.cenario;
+    }
+
+    public ArrayList<Monster> getMonstros() {
+        return this.monstrosDolvl;
     }
     
 }
