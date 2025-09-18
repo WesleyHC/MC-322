@@ -1,7 +1,7 @@
-package tarefa2;
+/*package tarefa2;
 
 import tarefa1.*;
-import tarefa3.GeradorDeFases;
+import tarefa3.*;
 
 import java.util.ArrayList;
 
@@ -42,11 +42,11 @@ public class LevelConstructor implements GeradorDeFases{
             }
             
            
-            Level newlvl = new Level(nivelDolvl, cenario, monstrosDolvl);
+             newlvl = new Fase(nivelDolvl, monstrosDolvl, cenario);
             levels.add(newlvl);
         }
 
         return levels;
     }
 
-    }
+    }*/

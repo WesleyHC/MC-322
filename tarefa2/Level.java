@@ -1,4 +1,4 @@
-package tarefa2;
+/*package tarefa2;
 
 import java.util.ArrayList;
 
@@ -63,4 +63,4 @@ public class Level implements Fase{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'isDone'");
     }
-}
+}*/
