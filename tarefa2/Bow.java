@@ -3,7 +3,7 @@ package tarefa2;
 public class Bow extends Weapon {
     private String name;
     public Bow(){
-        super(15, 2);
+        super(12, 2);
         this.name = "Arco";
     }
 

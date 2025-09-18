@@ -22,9 +22,5 @@ public abstract class Weapon implements Item{
         return dano;
     }
     
-    //Setters
-    public void setDano(int valor){
-        this.dano += dano;
-    }
-    
+    public abstract String getName();
 }

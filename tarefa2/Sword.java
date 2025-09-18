@@ -3,7 +3,7 @@ package tarefa2;
 public class Sword extends Weapon {
     private String name;
     public Sword(){
-        super(5, 0);
+        super(8, 1);
         this.name = "Espada";
     }
 

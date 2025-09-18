@@ -18,14 +18,14 @@ public class FuriaDivina implements AcaoDeCombate {
         float crit = new Random().nextFloat();
         if (crit <= User.getSorte()) {
             CH = true;
-            System.out.println("Os deuses estão ao lado de " + User.getName() + "! Seu acerto será crítico");
+            System.out.println("Os deuses estão ao lado de " + User.getName() + "! Seu acerto será crítico.");
         }
 
         switch(Gods[deus]){
             case("Zeus"):
                 dano = User.getForca() + User.getDivineAfinity() * 2 + User.getArma().getDano();
                 if (CH){
-                    dano *= 2;
+                    dano *= 1.5;
                 }
                 System.out.println("BENÇÃO DE ZEUS!\nUm raio atinge " + alvo.getName() + "!");
                 alvo.receberDano(dano);
@@ -33,7 +33,7 @@ public class FuriaDivina implements AcaoDeCombate {
             case("Poseidon"):
                 dano = User.getForca() + User.getDivineAfinity() + User.getArma().getDano();
                 if (CH){
-                    dano *= 2;
+                    dano *= 1.5;
                 }
                 System.out.println("BENÇÃO DE POSEIDON!\nUma onda esmaga " + alvo.getName() + "!");
                 alvo.receberDano(dano);
@@ -49,7 +49,7 @@ public class FuriaDivina implements AcaoDeCombate {
             case("Ares"): 
                 dano = User.getForca() * 3 + User.getArma().getDano();
                 if (CH){
-                    dano *= 2;
+                    dano *= 1.5;
                 }
                 System.out.println("BENÇÃO DE ARES!\nA fúria da guerra inspira um golpe devastador em " + alvo.getName());
                 alvo.receberDano(dano);
@@ -57,11 +57,11 @@ public class FuriaDivina implements AcaoDeCombate {
             case("Hades"):  
                 dano = User.getDivineAfinity() * 2 + User.getArma().getDano();
                 if (CH){
-                    dano *= 2;
+                    dano *= 1.5;
                 }
                 System.out.println("BENÇÃO DE HADES!\nA energia vital de " + alvo.getName() + " é drenada!");
-                alvo.receberDano(dano);
-                User.receberCura(dano);
+                int drain = alvo.receberDano(dano);
+                User.receberCura(drain);
                 break;
         }
     }

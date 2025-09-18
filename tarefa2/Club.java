@@ -3,7 +3,7 @@ package tarefa2;
 public class Club extends Weapon { //clava / porrete
     private String name;
     public Club(){
-        super(25, 3);
+        super(18, 3);
         this.name = "Porrete";
     }
 
