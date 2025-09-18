@@ -21,7 +21,7 @@ public class Main {
 
         for (Fase fase : fases) { //For Fases
                 fase.iniciar(hero);
-                ArrayList<Monster> monstrosdolvl = ((FaseDeCombate)fase).getMonstros();
+                ArrayList<Monster> monstrosdolvl = fase.getMonstros();
                 
                 for (Monster monstro : monstrosdolvl) { //For monstros
                     System.out.println(hero.getName() + " se depara com um temível oponente: " + monstro.getName());
@@ -61,7 +61,7 @@ public class Main {
                                 hero.setDracmas(((Dracmas)item).getQuantity());
                             } else if (item instanceof Weapon) {
                                 System.out.println(hero.getName() + " obteve: " + item.getName());
-                                hero.equiparArma((Weapon) item);
+                                hero.equipar((Weapon) item);
                             }
                         }
                     }

@@ -2,11 +2,11 @@ package tarefa3;
 
 import java.util.ArrayList;
 
-import tarefa1.Hero;
-import tarefa1.Monster;
+import tarefa1.*;
 
 public interface Fase {
     void iniciar(Hero heroi);
-    boolean isDone(int kills, ArrayList<Monster> TotalMonstros);
+    boolean isDone();
     TipoCenario getTipoDeCenario();
+    ArrayList<Monster> getMonstros();
 }
