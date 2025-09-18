@@ -48,21 +48,21 @@ public abstract class Character implements Combatente{
     }
 
     //Métodos
-    public void receberDano(int dano){
+    public int receberDano(int dano){
         setPontosDeVida(-dano);
-        System.out.println(this.name + " recebeu" + dano + " de dano!");
         if (pontosDeVida < 0)
-            pontosDeVida = 0;   
+            pontosDeVida = 0; 
+            return dano;  
     }
 
     public void receberCura(int cura){
         setPontosDeVida(cura);
-        System.out.println(this.name + " curou-se em" + cura + " de vida!");
+        System.out.println(this.name + " curou-se em " + cura + " de vida!");
     }
 
     public void receberForca(int forca){
         setForca(forca);
-        System.out.println(this.name + "ficou mais forte em " + forca + "pontos!");
+        System.out.println(this.name + " ficou mais forte em " + forca + " pontos!");
     }
 
     public boolean isAlive(){

@@ -12,5 +12,7 @@ public class Dracmas implements Item{
         return name;
     }
     
-    
+    public int getQuantity() {
+        return quantity;
+    }
 }

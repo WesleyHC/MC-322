@@ -1,13 +1,10 @@
 package tarefa1;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import tarefa2.Weapon;
-import tarefa3.BasicAtk;
-import tarefa3.Item;
-import tarefa3.Rest;
+import tarefa2.*;
+import tarefa3.*;
 
 public class Chimera extends Monster {
     //Atributo intimidador (dano do inimigo reduzido)
@@ -29,7 +26,7 @@ public class Chimera extends Monster {
     }
 
     //Métodos
-    public void receberDano(int dano){
+    public int receberDano(int dano){
         if (intimidate_msg) {
             System.out.println("O herói está intimidado por " + this.getName() + ", enfraquecendo seu ataque!");
             intimidate_msg = false;
@@ -40,19 +37,22 @@ public class Chimera extends Monster {
         }
         System.out.println(this.getName() + " resiste ao golpe e sofre apenas " + damage + " de dano.");
         super.receberDano(damage);
+        return damage;
     }
 
     @Override
-    public List<Item> droparLoot(Hero heroi) {
+    public ArrayList<Item> droparLoot(Hero heroi) {
         Random random = new Random();
-        List<Item> drops = new ArrayList<>();
+        ArrayList<Item> drops = new ArrayList<>();
 
-        int money = random.nextInt(50);
-        heroi.setDracmas(money);
-
-        drops.add(largarArma(heroi.getSorte()));
-
+        int money = random.nextInt(12, 50);
+        drops.add(new Dracmas(money));
+        System.out.println(this.getName() + " deixou cair " + money + " Dracmas!");
+        Weapon dropArma = largarArma(heroi.getSorte());
+        
+        if (dropArma != null) {
+            drops.add(dropArma);
+        }
         return drops;
     }
-
 }

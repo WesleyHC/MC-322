@@ -1,7 +1,6 @@
 package tarefa1;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import tarefa2.Weapon;
 import tarefa3.AcaoDeCombate;
@@ -43,26 +42,29 @@ public abstract class Monster extends Character implements Lootable{
     }
 
     public void addArmaRara(Weapon arma) {
-        arma.setDano(arma.getDano()*2);
         this.armasRaras.add(arma);
     }
     
     public Weapon largarArma(float luck) { //dropa uma weapon aleatoria
         Random random = new Random();
         float rare = new Random().nextFloat();
-        if (rare<=luck){
+        if (rare<=luck && !armasRaras.isEmpty()){
             System.out.println("A arma apresenta um poder maior do que o normal! Dizem que a arma corresponde a grandiosidade do guerreiro!");
             int arma = random.nextInt(armasRaras.size());
             return armasRaras.get(arma);
-        } else {
+
+        } else if (!armasComuns.isEmpty()) {
             System.out.println("Foi deixada pelos restos moribundos da criatura uma arma comum");
             int arma = random.nextInt(armasComuns.size());
             return armasComuns.get(arma);
-    }
+
+        } else {
+            return null; //não tem arma pra dropar
+        }
 }
     public AcaoDeCombate escolherAcao(Combatente alvo) {
          return acoes.get(random.nextInt(acoes.size()));
     }
 
-    public abstract List<Item> droparLoot(Hero heroi);
+    public abstract ArrayList<Item> droparLoot(Hero heroi);
 }

@@ -39,12 +39,16 @@ public abstract class Hero extends Character {
     public void setDracmas(int valor) {
         dracmas += valor;
     }
+
+    public void setSorte(float valor) {
+        sorte += valor;
+    }
     
     //Métodos
     private void subirdeNivel() {
         this.nivel += 1;
-        super.setForca(5);
-        super.setPontosDeVida(10);
+        super.setForca(8);
+        super.setPontosDeVida(30);
         System.out.println("==============================================");
         System.out.println(this.getName() + " SUBIU DE NÍVEL!");
         System.out.println("-=============================================");
@@ -63,17 +67,18 @@ public abstract class Hero extends Character {
         super.exibirStatus();
         System.out.print("Nível: " + nivel + " | ");
         System.out.println("Experiência: " + experiencia);
-        System.out.print("Sorte Divina: " + sorte + " | ");
-        System.out.println("Arma Equipada: " + this.getArma());
+        
+        System.out.printf("Sorte Divina: %.3f  | ", sorte);
+        System.out.println("Arma Equipada: " + this.getArma().getName());
         System.out.println("Dracmas atuais: " + this.dracmas);
     }
 
     public void equiparArma(Weapon novaArma){
         if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
             this.arma = novaArma;
-            System.out.println(this.getName() + " equipou " + novaArma);
+            System.out.println(this.getName() + " equipou " + novaArma.getName());
         } else {
-            System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma);
+            System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma.getName());
         }
     }
 

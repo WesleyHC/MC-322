@@ -1,13 +1,10 @@
 package tarefa1;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import tarefa2.Weapon;
-import tarefa3.BasicAtk;
-import tarefa3.Item;
-import tarefa3.Rest;
+import tarefa2.*;
+import tarefa3.*;
 
 public class Harpy extends Monster {
     //Atributo voar (chance de esquivar)
@@ -28,26 +25,30 @@ public class Harpy extends Monster {
 
     //Métodos
 
-    public void receberDano(int dano) {
+    public int receberDano(int dano) {
         if ((100*Math.random()) < this.flight) {
             System.out.println(this.getName() + " voa agilmente e ESQUIVA do ataque!");
+            return 0;
         } else {
             System.out.println("O ataque ACERTA " + this.getName() + "!");
             super.receberDano(dano);
+            return dano;
         }
     }
 
     @Override
-    public List<Item> droparLoot(Hero heroi) {
+    public ArrayList<Item> droparLoot(Hero heroi) {
         Random random = new Random();
-        List<Item> drops = new ArrayList<>();
+        ArrayList<Item> drops = new ArrayList<>();
 
-        int money = random.nextInt(50);
-        heroi.setDracmas(money);
-
-        drops.add(largarArma(heroi.getSorte()));
-
+        int money = random.nextInt(10, 50);
+        drops.add(new Dracmas(money));
+        System.out.println(this.getName() + " deixou cair " + money + " Dracmas!");
+        Weapon dropArma = largarArma(heroi.getSorte());
+        
+        if (dropArma != null) {
+            drops.add(dropArma);
+        }
         return drops;
     }
-
 }
