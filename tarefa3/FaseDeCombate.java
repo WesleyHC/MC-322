@@ -9,12 +9,14 @@ public class FaseDeCombate implements Fase {
     private int nivel;
     private TipoCenario cenario;
     private ArrayList<Monster> monstrosDolvl;
+    private ArrayList<Evento> eventos;
     
     //Construtor
-    public FaseDeCombate(int nivel, ArrayList<Monster> monstrosDolvl, TipoCenario cenario){
+    public FaseDeCombate(int nivel, ArrayList<Monster> monstrosDolvl, TipoCenario cenario, ArrayList<Evento> eventos){
         this.nivel = nivel;
         this.cenario = cenario;
         this.monstrosDolvl = monstrosDolvl;
+        this.eventos = eventos;
     }
 
     @Override
@@ -41,11 +43,14 @@ public class FaseDeCombate implements Fase {
 
     @Override
     public TipoCenario getTipoDeCenario() {
-        return this.cenario;
+        return cenario;
     }
 
     public ArrayList<Monster> getMonstros() {
-        return this.monstrosDolvl;
+        return monstrosDolvl;
     }
     
+    public ArrayList<Evento> getEventos(){
+        return eventos;
+    }
 }

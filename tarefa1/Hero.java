@@ -34,7 +34,10 @@ public abstract class Hero extends Character {
     }
 
     public float getSorte() {
-        return this.sorte;
+        return sorte;
+    }
+    public int getDracmas(){
+        return dracmas;
     }
     //Setters 
     public void setDracmas(int valor) {
@@ -50,9 +53,9 @@ public abstract class Hero extends Character {
         this.nivel += 1;
         super.setForca(8);
         super.setPontosDeVida(30);
-        System.out.println("==============================================");
+        System.out.println("\n==============================================");
         System.out.println(this.getName() + " SUBIU DE NÍVEL!");
-        System.out.println("-=============================================");
+        System.out.println("==============================================\n");
         this.experiencia -= this.expProximoNivel;
         this.expProximoNivel *= 2; 
         

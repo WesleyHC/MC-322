@@ -64,6 +64,13 @@ public class Main {
                                 hero.equipar((Weapon) item);
                             }
                         }
+                        //eventos
+                        ArrayList<Evento> eventosDolvl = fase.getEventos();
+                        for (Evento evento : eventosDolvl) {
+                            if (evento.Trigger()) {
+                                evento.start(hero);
+                            }
+                        }
                     }
                 }
 

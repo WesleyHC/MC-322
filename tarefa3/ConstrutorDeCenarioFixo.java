@@ -40,10 +40,13 @@ public class ConstrutorDeCenarioFixo implements GeradorDeFases{
                     quimera.addArmaRara(new Spear());
                     monstrosDolvl.add(quimera);
                 }
+                
             }
-            
-           
-            FaseDeCombate newlvl = new FaseDeCombate(nivelDolvl, monstrosDolvl, cenario);
+            //add eventos
+                ArrayList<Evento> eventosDolvl = new ArrayList<>();
+                eventosDolvl.add(new Hermes());
+
+            FaseDeCombate newlvl = new FaseDeCombate(nivelDolvl, monstrosDolvl, cenario, eventosDolvl);
             fases.add(newlvl);
         }
 

@@ -9,4 +9,5 @@ public interface Fase {
     boolean isDone();
     TipoCenario getTipoDeCenario();
     ArrayList<Monster> getMonstros();
+    ArrayList<Evento> getEventos();
 }
