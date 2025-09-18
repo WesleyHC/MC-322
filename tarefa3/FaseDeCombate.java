@@ -16,6 +16,7 @@ public class FaseDeCombate implements Fase {
         this.cenario = cenario;
         this.monstrosDolvl = monstrosDolvl;
     }
+
     @Override
     public void iniciar(Hero heroi) {
         System.out.println(this.cenario.getDescricao());

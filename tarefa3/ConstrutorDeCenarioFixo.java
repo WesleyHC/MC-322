@@ -5,6 +5,7 @@ import tarefa2.*;
 import java.util.ArrayList;
 
 public class ConstrutorDeCenarioFixo implements GeradorDeFases{
+    TipoCenario[] Cenarios = TipoCenario.values();
 
     @Override
     public ArrayList<Fase> gerar(int nFases) {

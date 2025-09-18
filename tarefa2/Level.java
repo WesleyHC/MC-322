@@ -5,17 +5,20 @@ import java.util.ArrayList;
 import tarefa1.Hero;
 import tarefa1.Monster;
 import tarefa3.Fase;
+import tarefa3.TipoCenario;
 
 public class Level implements Fase{
     //Atributos
     private int nivel;
-    private String ambiente;
+    private TipoCenario ambiente;
     private ArrayList<Monster> monstros;
+    private String descricao;
 
     // Construtor
-    public Level(int nivel, String ambiente, ArrayList<Monster> monstros){
+    public Level(int nivel, TipoCenario ambiente, ArrayList<Monster> monstros){
         this.nivel = nivel;
         this.ambiente = ambiente;
+        this.descricao = ambiente.getDescricao();
         this.monstros = monstros;
     }
 
@@ -23,9 +26,14 @@ public class Level implements Fase{
     public int getNivel() {
         return nivel;
     }
-    public String getAmbiente() {
+    public TipoCenario getTipoDeCenario() {
         return ambiente;
     }
+
+    public String CenarioDescricao(){
+        return descricao;
+    }
+
     public ArrayList<Monster> getMonstros() {
         return monstros;
     }
