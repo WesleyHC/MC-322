@@ -1,18 +1,24 @@
-package tarefa2;
+/*package tarefa2;
 
 import java.util.ArrayList;
-import tarefa1.Monster;
 
-public class Level {
+import tarefa1.Hero;
+import tarefa1.Monster;
+import tarefa3.Fase;
+import tarefa3.TipoCenario;
+
+public class Level implements Fase{
     //Atributos
     private int nivel;
-    private String ambiente;
+    private TipoCenario ambiente;
     private ArrayList<Monster> monstros;
+    private String descricao;
 
     // Construtor
-    public Level(int nivel, String ambiente, ArrayList<Monster> monstros){
+    public Level(int nivel, TipoCenario ambiente, ArrayList<Monster> monstros){
         this.nivel = nivel;
         this.ambiente = ambiente;
+        this.descricao = ambiente.getDescricao();
         this.monstros = monstros;
     }
 
@@ -20,9 +26,14 @@ public class Level {
     public int getNivel() {
         return nivel;
     }
-    public String getAmbiente() {
+    public TipoCenario getTipoDeCenario() {
         return ambiente;
     }
+
+    public String CenarioDescricao(){
+        return descricao;
+    }
+
     public ArrayList<Monster> getMonstros() {
         return monstros;
     }
@@ -40,4 +51,16 @@ public class Level {
                 break;
         }
     }
-}
+
+    @Override
+    public void iniciar(Hero heroi) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'iniciar'");
+    }
+
+    @Override
+    public boolean isDone() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isDone'");
+    }
+}*/

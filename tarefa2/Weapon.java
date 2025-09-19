@@ -1,6 +1,8 @@
 package tarefa2;
 
-public abstract class Weapon {
+import tarefa3.Item;
+
+public abstract class Weapon implements Item{
     //Atributos
     private int dano;
     private int minNivel;
@@ -19,10 +21,10 @@ public abstract class Weapon {
     public int getDano(){
         return dano;
     }
-    
-    //Setters
-    public void setDano(int valor){
-        this.dano += dano;
+
+    public void mult_dano(double aumento){
+        this.dano += (int)(this.dano * aumento/2);
     }
     
+    public abstract String getName();
 }

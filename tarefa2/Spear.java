@@ -1,14 +1,14 @@
 package tarefa2;
 
 public class Spear extends Weapon {
-    private String nome;
+    private String name;
     public Spear(){
         super(10, 1);
-        this.nome = "Lança";
+        this.name = "Lança";
     }
 
-    public String toString() {
-        return this.nome; // Retorna o nome da arma
+    public String getName() {
+        return this.name; // Retorna o nome da arma
     }
 }
 

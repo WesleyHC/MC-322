@@ -1,6 +1,11 @@
 package tarefa1;
 
+import java.util.Random;
+
 import tarefa2.Weapon;
+import tarefa3.AcaoDeCombate;
+import tarefa3.Combatente;
+import tarefa3.Item;
 
 public abstract class Hero extends Character {
     //Atributos
@@ -8,6 +13,8 @@ public abstract class Hero extends Character {
     private int experiencia;
     private int expProximoNivel;
     private float sorte;
+    private int dracmas;
+    private Random random = new Random();
 
     //Construtor
     public Hero(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte){
@@ -16,6 +23,7 @@ public abstract class Hero extends Character {
         this.experiencia = experiencia;
         this.expProximoNivel = expProximoNivel;
         this.sorte = sorte;
+        this.dracmas = 0;
     }
     //Getters
     public int getNivel(){
@@ -26,17 +34,28 @@ public abstract class Hero extends Character {
     }
 
     public float getSorte() {
-        return this.sorte;
+        return sorte;
+    }
+    public int getDracmas(){
+        return dracmas;
+    }
+    //Setters 
+    public void setDracmas(int valor) {
+        dracmas += valor;
+    }
+
+    public void setSorte(float valor) {
+        sorte += valor;
     }
     
     //Métodos
     private void subirdeNivel() {
         this.nivel += 1;
-        super.setForca(5);
-        super.setPontosDeVida(10);
-        System.out.println("==============================================");
+        super.setForca(8);
+        super.setPontosDeVida(30);
+        System.out.println("\n==============================================");
         System.out.println(this.getName() + " SUBIU DE NÍVEL!");
-        System.out.println("-=============================================");
+        System.out.println("==============================================\n");
         this.experiencia -= this.expProximoNivel;
         this.expProximoNivel *= 2; 
         
@@ -52,18 +71,26 @@ public abstract class Hero extends Character {
         super.exibirStatus();
         System.out.print("Nível: " + nivel + " | ");
         System.out.println("Experiência: " + experiencia);
-        System.out.print("Sorte Divina: " + sorte + " | ");
-        System.out.println("Arma Equipada: " + this.getArma());
+        
+        System.out.printf("Sorte Divina: %.3f  | ", sorte);
+        System.out.println("Arma Equipada: " + this.getArma().getName());
+        System.out.println("Dracmas atuais: " + this.dracmas);
     }
 
-    public abstract void usarHabilidadeEspecial(Character alvo);
-
-    public void equiparArma(Weapon novaArma){
-        if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
-            this.arma = novaArma;
-            System.out.println(this.getName() + " equipou " + novaArma);
-        } else {
-            System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma);
+    public void equipar(Item novoItem){
+        if (novoItem instanceof Weapon){
+            Weapon novaArma = (Weapon)novoItem;
+            if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
+                this.arma = novaArma;
+                System.out.println(this.getName() + " equipou " + novaArma.getName());
+            } else {
+            System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma.getName());
+            }
         }
     }
+
+    public AcaoDeCombate escolherAcao(Combatente alvo) {
+        return acoes.get(random.nextInt(acoes.size()));
+    }
+
 }

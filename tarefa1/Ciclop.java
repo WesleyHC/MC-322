@@ -1,6 +1,10 @@
 package tarefa1;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import tarefa2.Weapon;
+import tarefa3.*;
 
 public class Ciclop extends Monster {
     //Atributo golpe pesado (danoso, porém lento, alternando o ataque entre os turnos)
@@ -10,6 +14,8 @@ public class Ciclop extends Monster {
     public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido){
         super(name, pontosDeVida, forca, arma, xpConcedido);
         this.heavystrike = true;
+        adicionarAcao(new GolpePesado());
+        adicionarAcao(new Rest());
     }
 
     //Getters
@@ -17,19 +23,25 @@ public class Ciclop extends Monster {
         return heavystrike;
     }
 
+    //Setters
+    public void setHeavystrike(boolean heavystrike){
+        this.heavystrike = heavystrike;
+    }
+
     //Métodos
-    public void atacar(Character alvo) {
-        int dano;
-        if (this.heavystrike) {
-            dano = this.getForca()*2;
-            System.out.println(this.getName() +" executa um GOLPE PESADO!");
-            System.out.println("O ataque causa " + dano + " de dano em " + alvo.getName() + "!");
-            this.heavystrike = false;
-        } else {
-            dano = 0;
-            System.out.println(this.getName() + " está fatigado do último golpe e não consegue atacar.");
-            this.heavystrike = true;
+    @Override
+    public ArrayList<Item> droparLoot(Hero heroi) {
+        Random random = new Random();
+        ArrayList<Item> drops = new ArrayList<>();
+
+        int money = random.nextInt(15, 50);
+        drops.add(new Dracmas(money));
+        System.out.println(this.getName() + " deixou cair " + money + " Dracmas!");
+        Weapon dropArma = largarArma(heroi.getSorte());
+        
+        if (dropArma != null) {
+            drops.add(dropArma);
         }
-        alvo.receberDano(dano);
+        return drops;
     }
 }

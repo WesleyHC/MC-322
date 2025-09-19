@@ -1,14 +1,14 @@
 package tarefa2;
 
 public class Club extends Weapon { //clava / porrete
-    private String nome;
+    private String name;
     public Club(){
-        super(25, 3);
-        this.nome = "Porrete";
+        super(18, 3);
+        this.name = "Porrete";
     }
 
-    public String toString() {
-        return this.nome; // Retorna o nome da arma
+    public String getName() {
+        return this.name; // Retorna o nome da arma
     }
 }
 

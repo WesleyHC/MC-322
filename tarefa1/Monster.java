@@ -3,12 +3,17 @@ package tarefa1;
 import java.util.ArrayList;
 import java.util.Random;
 import tarefa2.Weapon;
+import tarefa3.AcaoDeCombate;
+import tarefa3.Combatente;
+import tarefa3.Item;
+import tarefa3.Lootable;
 
-public abstract class Monster extends Character {
+public abstract class Monster extends Character implements Lootable{
     //Atributos
     private int xpConcedido;
     private ArrayList<Weapon> armasComuns;
     private ArrayList<Weapon> armasRaras;
+    private Random random = new Random();
 
     //Construtor
     public Monster(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido) {
@@ -32,26 +37,36 @@ public abstract class Monster extends Character {
         }
     }
 
-    public void addArmaComum(Weapon arma) {
+    public void addArmaComum(Weapon arma, int mult) {
+        arma.mult_dano(mult);
         this.armasComuns.add(arma);
     }
 
-    public void addArmaRara(Weapon arma) {
-        arma.setDano(arma.getDano()*2);
+    public void addArmaRara(Weapon arma, int mult) {
+        arma.mult_dano(mult);
         this.armasRaras.add(arma);
     }
     
     public Weapon largarArma(float luck) { //dropa uma weapon aleatoria
         Random random = new Random();
         float rare = new Random().nextFloat();
-        if (rare<=luck){
+        if (rare<=luck && !armasRaras.isEmpty()){
             System.out.println("A arma apresenta um poder maior do que o normal! Dizem que a arma corresponde a grandiosidade do guerreiro!");
             int arma = random.nextInt(armasRaras.size());
             return armasRaras.get(arma);
-        } else {
+
+        } else if (!armasComuns.isEmpty()) {
             System.out.println("Foi deixada pelos restos moribundos da criatura uma arma comum");
             int arma = random.nextInt(armasComuns.size());
             return armasComuns.get(arma);
-    }
+
+        } else {
+            return null; //não tem arma pra dropar
+        }
 }
+    public AcaoDeCombate escolherAcao(Combatente alvo) {
+         return acoes.get(random.nextInt(acoes.size()));
+    }
+
+    public abstract ArrayList<Item> droparLoot(Hero heroi);
 }
