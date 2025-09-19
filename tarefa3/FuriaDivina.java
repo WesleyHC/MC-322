@@ -27,7 +27,7 @@ public class FuriaDivina implements AcaoDeCombate {
                 if (CH){
                     dano *= 1.5;
                 }
-                System.out.println("BENÇÃO DE ZEUS!\nUm raio atinge " + alvo.getName() + "!");
+                System.out.println("BENÇÃO DE ZEUS!\nUm raio atinge " + alvo.getName() + "! Causando ferimentos de " + dano);
                 alvo.receberDano(dano);
                 break;
             case("Poseidon"):
@@ -35,11 +35,11 @@ public class FuriaDivina implements AcaoDeCombate {
                 if (CH){
                     dano *= 1.5;
                 }
-                System.out.println("BENÇÃO DE POSEIDON!\nUma onda esmaga " + alvo.getName() + "!");
+                System.out.println("BENÇÃO DE POSEIDON!\nUma onda esmaga " + alvo.getName() + "! Causando um impacto de " + dano );
                 alvo.receberDano(dano);
                 break;
             case("Afrodite"):
-                int cura = User.getDivineAfinity() + (User.getNivel() * 2);
+                int cura = User.getDivineAfinity() + (User.getNivel() * 15);
                 if (CH){
                     cura *= 2;
                 }
@@ -51,7 +51,7 @@ public class FuriaDivina implements AcaoDeCombate {
                 if (CH){
                     dano *= 1.5;
                 }
-                System.out.println("BENÇÃO DE ARES!\nA fúria da guerra inspira um golpe devastador em " + alvo.getName());
+                System.out.println("BENÇÃO DE ARES!\nA fúria da guerra inspira um golpe devastador de " + dano + " em " + alvo.getName());
                 alvo.receberDano(dano);
                 break;
             case("Hades"):  

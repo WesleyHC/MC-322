@@ -26,18 +26,18 @@ public class ConstrutorDeCenarioFixo implements GeradorDeFases{
                 
                 if (j == 0) {
                     Ciclop ciclope = new Ciclop("Ciclope", 40 + vidaBonus, 15 + forcaBonus, new Club(), 15 + xpBonus);
-                    ciclope.addArmaComum(new Sword());
-                    ciclope.addArmaRara(new Club());
+                    ciclope.addArmaComum(new Sword(), nivelDolvl);
+                    ciclope.addArmaRara(new Club(), nivelDolvl);
                     monstrosDolvl.add(ciclope);
                 } else if (j == 1) {
                     Harpy harpia = new Harpy("Harpia", 30 + vidaBonus, 5 + forcaBonus, new Bow(), 10 + xpBonus, 35);
-                    harpia.addArmaComum(new Sword());
-                    harpia.addArmaRara(new Bow());
+                    harpia.addArmaComum(new Sword(), nivelDolvl);
+                    harpia.addArmaRara(new Bow(), nivelDolvl);
                     monstrosDolvl.add(harpia);
                 } else {
                     Chimera quimera = new Chimera("Quimera", 45 + vidaBonus, 10 + forcaBonus, new Sword(), 20 + xpBonus + 5, 5*nivelDolvl);
-                    quimera.addArmaComum(new Sword());
-                    quimera.addArmaRara(new Spear());
+                    quimera.addArmaComum(new Sword(), nivelDolvl);
+                    quimera.addArmaRara(new Spear(), nivelDolvl);
                     monstrosDolvl.add(quimera);
                 }
                 

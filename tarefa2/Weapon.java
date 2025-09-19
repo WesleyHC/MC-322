@@ -21,6 +21,10 @@ public abstract class Weapon implements Item{
     public int getDano(){
         return dano;
     }
+
+    public void mult_dano(double aumento){
+        this.dano += (int)(this.dano * aumento/2);
+    }
     
     public abstract String getName();
 }

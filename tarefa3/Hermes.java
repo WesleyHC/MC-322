@@ -40,7 +40,7 @@ public class Hermes implements Evento{
     }
 
     private void visit(Hero heroi) {
-        System.out.println("\n=================|HERMES, O ALGUMA COISA|=================");
+        System.out.println("\n=================|HERMES, O PATRONO DOS VIAJANTES |=================");
         System.out.println("Com um brilho fugaz, Hermes surge em seu caminho.");
         System.out.println("'Uma árdua jornada, ein? Por um preço, posso tornar seu fardo um pouquinho mais leve.'");
         System.out.println("Itens à venda:");
@@ -55,7 +55,7 @@ public class Hermes implements Evento{
             Weapon armaForSale = stock.get(j);
             int priceAtual = prices.get(j);
 
-            if (heroi.getDracmas() >= priceAtual && heroi.getNivel() >= armaForSale.getMinNivel() && armaForSale.getDano() > heroi.getArma().getDano()) {
+            if ((heroi.getDracmas() >= priceAtual) && (heroi.getNivel() >= armaForSale.getMinNivel()) && (armaForSale.getDano() > heroi.getArma().getDano())) {
                 System.out.println(heroi.getName() + " comprou " + armaForSale.getName() + " por " + priceAtual + " Dracmas.");
                 heroi.setDracmas(-priceAtual);
                 heroi.equipar(armaForSale);

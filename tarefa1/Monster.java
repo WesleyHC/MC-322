@@ -37,11 +37,13 @@ public abstract class Monster extends Character implements Lootable{
         }
     }
 
-    public void addArmaComum(Weapon arma) {
+    public void addArmaComum(Weapon arma, int mult) {
+        arma.mult_dano(mult);
         this.armasComuns.add(arma);
     }
 
-    public void addArmaRara(Weapon arma) {
+    public void addArmaRara(Weapon arma, int mult) {
+        arma.mult_dano(mult);
         this.armasRaras.add(arma);
     }
     

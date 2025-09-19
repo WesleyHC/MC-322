@@ -38,13 +38,17 @@ public class Main {
                             AcaoDeCombate monstroAcao = monstro.escolherAcao(hero);
                             monstroAcao.executar(monstro, hero);
                         }
+
                         hero.exibirStatus();
                         monstro.exibirStatus();
                         System.out.println("==============|FIM DO TURNO " + turno + "|===============");
                         turno += 1;
                     }
+                    
 
                     if (!hero.isAlive()) { //Verificação se o heroi morreu
+                        // hero.exibirStatus();
+                        // monstro.exibirStatus();
                         System.out.println("\n" + hero.getName() + " é derrotado(a)!\n\nPara os Deuses não há espaço para a fraqueza.");
                         System.out.println("O Olimpo vira o rosto, e o nome de " + hero.getName() + " se perde no esquecimento.");
                         System.out.println(hero.getName() + " foi considerado(a) indigno(a)!");

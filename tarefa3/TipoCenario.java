@@ -20,7 +20,7 @@ public enum TipoCenario {
     CAMPOS_DA_PERDICAO("CAMPOS DA PERDIÇÃO", "As terras por onde os espíritos vagam sem rumo, o plano onde todos os seres buscam eternamente seu destino final. Um espaço sustentado meramente pelos sonhos e sentimentos daqueles que já não mais vivem. Os temerários Campos da Perdição."){
         public void Effect(Hero heroi){
             int efeito = 30;
-            System.out.println("A energia espiritual dos Campos da Perdição é avassaladora!");
+            System.out.println("A energia espiritual dos Campos da Perdição é avassaladora! O miasma do local causa " + efeito + " de dano em " + heroi.getName());
             heroi.receberDano(efeito);
         }
     };
