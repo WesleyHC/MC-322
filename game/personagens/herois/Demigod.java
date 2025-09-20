@@ -1,0 +1,28 @@
+package game.personagens.herois;
+
+import game.combate.BasicAtk;
+import game.combate.FuriaDivina;
+import game.combate.Motivate;
+import game.itens.weapons.Weapon;
+import game.personagens.Hero;
+
+public class Demigod extends Hero {
+    //Atributos
+    private int divineAfinity;
+
+    //Construtor
+    public Demigod(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte, int divineAfinity){
+        super(name, pontosDeVida, forca, nivel, experiencia, arma, expProximoNivel, sorte);
+        this.divineAfinity = divineAfinity;
+        adicionarAcao(new BasicAtk());
+        adicionarAcao(new FuriaDivina());
+        adicionarAcao(new Motivate());
+    }
+
+    //Getters
+    public int getDivineAfinity(){
+        return divineAfinity;
+    }
+
+}
+
