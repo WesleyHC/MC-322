@@ -2,7 +2,7 @@ package rpg.game;
 
 import java.util.ArrayList;
 
-import rpg.cenario.ConstrutorDeCenarioFixo;
+import rpg.cenario.*;
 import rpg.interfaces.*;
 import rpg.itens.Dracmas;
 import rpg.itens.weapons.*;
@@ -10,9 +10,11 @@ import rpg.personagens.*;
 import rpg.personagens.herois.Demigod;
 
 public class Main {
+
     public static void main(String[] args) {
+        Difficulty[] Dificuldades = Difficulty.values();
         GeradorDeFases geradordefases = new ConstrutorDeCenarioFixo();
-        ArrayList<Fase> fases = geradordefases.gerar(3);
+        ArrayList<Fase> fases = geradordefases.gerar(3, Dificuldades[2]);
         Sword Espada = new Sword();
         Hero hero = new Demigod("Perseus", 250, 18, 1, 0, Espada, 100, 0.25f , 10);
         
@@ -69,7 +71,7 @@ public class Main {
                             if (item instanceof Dracmas) {
                                 hero.setDracmas(((Dracmas)item).getQuantity());
                             } else if (item instanceof Weapon) {
-                                System.out.println(hero.getName() + " obteve: " + item.getName());
+                                System.out.println(hero.getName() + " obteve: " + item.getName() + " - Dano:" + ((Weapon)(item)).getDano());
                                 hero.equipar((Weapon) item);
                             }
                         }

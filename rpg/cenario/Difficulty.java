@@ -1,17 +1,17 @@
 package rpg.cenario;
 
 public enum Difficulty {
-    FACIL(1,1){
+    FACIL(1,1, 1){
         public void printar(){
-        System.out.println("FÁCIL");
+        System.out.println("FACIL");
         }
     },
-    MEDIO(1.5, 1.5){
+    MEDIO(2, 2, 2){
         public void printar(){
-        System.out.println("MÉDIO");
+        System.out.println("MEDIO");
         }
     },
-    DIFICL(2,2){
+    DIFICL(3,3, 3){
         public void printar(){
         System.out.println("DIFÍCIL");
         }
@@ -19,10 +19,12 @@ public enum Difficulty {
 
     private double mult_dano;
     private double mult_vida;
+    private double mult_arma;
 
-    Difficulty(double mult_dano, double mult_vida){
+    Difficulty(double mult_dano, double mult_vida, double mult_arma){
         this.mult_dano = mult_dano;
         this.mult_vida = mult_vida;
+        this.mult_arma = mult_arma;
     }
 
     public double getMultDano(){
@@ -30,6 +32,9 @@ public enum Difficulty {
     }
     public double getMultVida(){
         return this.mult_vida;
+    }
+    public double getMultArma(){
+        return this.mult_arma;
     }
 
     public abstract void printar();
