@@ -2,6 +2,7 @@ package rpg.personagens;
 
 import java.util.Random;
 
+import rpg.exceptions.LvlEquiparException;
 import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.interfaces.Item;
@@ -77,14 +78,18 @@ public abstract class Hero extends Character {
         System.out.println("Dracmas atuais: " + this.dracmas);
     }
 
-    public void equipar(Item novoItem){
+    public void equipar(Item novoItem) throws LvlEquiparException{
         if (novoItem instanceof Weapon){
             Weapon novaArma = (Weapon)novoItem;
-            if ((nivel >= novaArma.getMinNivel())&(novaArma.getDano()>=this.getArma().getDano())){ 
+            if ((nivel < novaArma.getMinNivel())) {
+                throw new LvlEquiparException("O herói não foi forte o suficiente. Requer nível " + novaArma.getMinNivel());
+            }
+            
+            if (novaArma.getDano()>=this.getArma().getDano()){ 
                 this.arma = novaArma;
                 System.out.println(this.getName() + " equipou " + novaArma.getName());
             } else {
-            System.out.println(this.getName() + " não foi forte o suficiente para equipar " + novaArma.getName());
+            System.out.println(novaArma.getName() + " tem dano igual ou inferior a arma atual!");
             }
         }
     }

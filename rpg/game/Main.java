@@ -3,6 +3,7 @@ package rpg.game;
 import java.util.ArrayList;
 
 import rpg.cenario.*;
+import rpg.exceptions.LvlEquiparException;
 import rpg.interfaces.*;
 import rpg.itens.Dracmas;
 import rpg.itens.weapons.*;
@@ -112,15 +113,18 @@ public class Main {
             switch (opcao) {
                 case 1:
                     if (!loot.isEmpty()){ 
-                    for (Item item : loot) {
+                    for (Item item : new ArrayList<>(loot)) {
                             if (item instanceof Dracmas) {
                                 hero.setDracmas(((Dracmas)item).getQuantity());
                             } else if (item instanceof Weapon) {
                                 System.out.println(hero.getName() + " obteve: " + item.getName() + " - Dano:" + ((Weapon)(item)).getDano());
-                                hero.equipar((Weapon) item);
+                                try {hero.equipar((Weapon) item);
+                            } catch (LvlEquiparException e) {
+                                System.out.println("Não foi possível equipar: " + e.getMessage());
                             }
                         } loot.clear();
                     } break;
+                }
 
                 case 2:
                     hero.exibirStatus();

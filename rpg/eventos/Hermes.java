@@ -3,6 +3,7 @@ package rpg.eventos;
 import java.util.ArrayList;
 import java.util.Random;
 
+import rpg.exceptions.LvlEquiparException;
 import rpg.interfaces.Evento;
 import rpg.itens.weapons.*;
 import rpg.personagens.Hero;
@@ -59,7 +60,10 @@ public class Hermes implements Evento{
             if ((heroi.getDracmas() >= priceAtual) && (heroi.getNivel() >= armaForSale.getMinNivel()) && (armaForSale.getDano() > heroi.getArma().getDano())) {
                 System.out.println(heroi.getName() + " comprou " + armaForSale.getName() + " por " + priceAtual + " Dracmas.");
                 heroi.setDracmas(-priceAtual);
-                heroi.equipar(armaForSale);
+                try{heroi.equipar(armaForSale);
+                } catch (LvlEquiparException e) {
+                    System.out.println("Não foi possível equipar: " + e.getMessage());
+                }
                 compraRealizada = true;
                 break;
             } 
