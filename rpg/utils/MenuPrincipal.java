@@ -9,8 +9,7 @@ public class MenuPrincipal {
         int opcao = InputManager.lerInteiro("Digite sua opção >", 1, 4);
         switch (opcao) {
                 case 1:
-                    IniciarNovoJogo();
-                    break;
+                    return IniciarNovoJogo();
                 case 2:
                     ExibirHerois();
                     break;
@@ -28,6 +27,7 @@ public class MenuPrincipal {
     }
 
     public static void PrintMenuPrincipal(){
+        System.out.println("");
         System.out.println("          A PROVAÇÃO DO OLIMPO: O RPG          ");
         System.out.println("==================================================");
         System.out.println("");
@@ -71,16 +71,18 @@ public class MenuPrincipal {
         int opcao = InputManager.lerInteiro("Digite uma opção >", 1, 3);
         switch (opcao) {
                 case 1:
-                    System.out.println("       Semideus       ");
+                    System.out.println("");
+                    System.out.println("-Semideus-");
                     System.out.println("Uma classe baseada na Afinidade Divina com os deuses!");
                     System.out.println("É capaz de se motivar, aumentando sua vida e força. Sua habilidade especial é capaz de canalizar os poderes de um deus aleatório");
-                    System.out.println("=========================");
+                    System.out.println("==================================================");
                     break;
                 case 2:
-                    System.out.println("       Sátiro       ");
+                    System.out.println("");
+                    System.out.println("-Sátiro-");
                     System.out.println("Uma classe baseada na conexão de Biomancia com a natureza");
                     System.out.println("Consegue se curar através dos espíritos naturais. Pode executar um golpe que drena a vida do inimigo. Ocasionalmente precisa descansar");
-                    System.out.println("=========================");
+                    System.out.println("==================================================");
                     break;
                 case 3:
                     status = false;
@@ -106,22 +108,25 @@ public class MenuPrincipal {
         int opcao = InputManager.lerInteiro("Digite uma opção >", 1, 4);
         switch (opcao) {
                 case 1:
-                    System.out.println("       Ciclope       ");
+                    System.out.println("");
+                    System.out.println("-Ciclope-");
                     System.out.println("Um dos monstros mais reconhecidos da mitologia grega. Conhecidos por sua intimidante estatura e porte, marcado pelo seu único olho penetrante");
                     System.out.println("Apresenta um ataque pesado que depois de realizado força o ciclope a descansar pelo próximo turno");
-                    System.out.println("=========================");
+                    System.out.println("==================================================");
                     break;
                 case 2:
-                    System.out.println("       Harpia       ");
+                    System.out.println("");
+                    System.out.println("-Harpia-");
                     System.out.println("Monstros rápidos e plumados, alçando voo e constantemente aterrorizando os céus");
                     System.out.println("Devido a sua destreza de locomoção aérea, ocasionalmente consegue desviar de algum golpe recebido");
-                    System.out.println("=========================");
+                    System.out.println("==================================================");
                     break;
                 case 3:
-                    System.out.println("       Quimera       ");
+                    System.out.println("");
+                    System.out.println("-Quimera-");
                     System.out.println("As criaturas híbridas que aterrorizam a humanidade há eras! A junção monstruosa de diferentes seres em um só corpo");
                     System.out.println("Sua reputação e imponência intimidam nosso herói, fazendo com que os golpes causem menos dano");
-                    System.out.println("=========================");
+                    System.out.println("==================================================");
                     break;
                 case 4:
                     status = false;

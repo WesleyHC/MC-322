@@ -8,6 +8,7 @@ import rpg.itens.Dracmas;
 import rpg.itens.weapons.*;
 import rpg.personagens.*;
 import rpg.personagens.herois.Demigod;
+import rpg.utils.InputManager;
 import rpg.utils.MenuPrincipal;
 
 public class Main {
@@ -16,6 +17,7 @@ public class Main {
         Difficulty[] Dificuldades = Difficulty.values();
         GeradorDeFases geradordefases = new ConstrutorDeCenarioFixo();
         int dificuldade = MenuPrincipal.loop();
+        if (dificuldade != 5){
         ArrayList<Fase> fases = geradordefases.gerar(3, Dificuldades[dificuldade]);
         Sword Espada = new Sword();
         Hero hero = new Demigod("Perseus", 250, 18, 1, 0, Espada, 100, 0.25f , 10);
@@ -69,14 +71,9 @@ public class Main {
 
                         //loots
                         ArrayList<Item> loot = monstro.droparLoot(hero);
-                        for (Item item : loot) {
-                            if (item instanceof Dracmas) {
-                                hero.setDracmas(((Dracmas)item).getQuantity());
-                            } else if (item instanceof Weapon) {
-                                System.out.println(hero.getName() + " obteve: " + item.getName() + " - Dano:" + ((Weapon)(item)).getDano());
-                                hero.equipar((Weapon) item);
-                            }
-                        }
+                        PosCombate(hero, loot);
+
+                        
                         //eventos
                         ArrayList<Evento> eventosDolvl = fase.getEventos();
                         for (Evento evento : eventosDolvl) {
@@ -92,10 +89,51 @@ public class Main {
                 }
         }
         
-        //Mensagem final (vitoria)
+        //Mensagem final (Vitoria)
         System.out.println("\nO silêncio na arena é quebrado por um trovão distante: o aplauso do Olimpo.");
         System.out.println("Com a Caixa de Pandora em mãos, " + hero.getName() + " se provou digno(a) da atenção dos Deuses!");
         System.out.println("\n=================|VITÓRIA|===================");
 
+        } 
+        System.out.println("Finalizando o Jogo");
+        System.exit(1);
+    }
+
+    private static void PosCombate(Hero hero, ArrayList<Item> loot) {
+        boolean continuar = true;
+        while (continuar){
+            System.out.println("\n=================|PÓS COMBATE|=================");
+            System.out.println("[1] Interagir com Loot");
+            System.out.println("[2] Informações do Herói");
+            System.out.println("[3] Desistir do Jogo");
+
+            int opcao = rpg.utils.InputManager.lerInteiro("Escolha sua ação > ", 1, 3);
+
+            switch (opcao) {
+                case 1:
+                    if (!loot.isEmpty()){ 
+                    for (Item item : loot) {
+                            if (item instanceof Dracmas) {
+                                hero.setDracmas(((Dracmas)item).getQuantity());
+                            } else if (item instanceof Weapon) {
+                                System.out.println(hero.getName() + " obteve: " + item.getName() + " - Dano:" + ((Weapon)(item)).getDano());
+                                hero.equipar((Weapon) item);
+                            }
+                        } loot.clear();
+                    } break;
+
+                case 2:
+                    hero.exibirStatus();
+                    InputManager.esperarEnter("Pressione a tecla \"ENTER\" para voltar ao menu pós combate");
+                    break;
+
+                case 3:
+                    System.exit(1);
+                    break;
+
+                default:
+                    break;
+            } break;
+        }
     }
 }
