@@ -85,7 +85,7 @@ public abstract class Hero extends Character {
                 throw new LvlEquiparException("O herói não foi forte o suficiente. Requer nível " + novaArma.getMinNivel());
             }
             
-            if (novaArma.getDano()>=this.getArma().getDano()){ 
+            if (novaArma.getDano()>this.getArma().getDano()){ 
                 this.arma = novaArma;
                 System.out.println(this.getName() + " equipou " + novaArma.getName());
             } else {
