@@ -123,8 +123,8 @@ public class Main {
                                 System.out.println("Não foi possível equipar: " + e.getMessage());
                             }
                         } loot.clear();
-                    } break;
-                }
+                    } continuar = false;
+                } //continuar = false;
 
                 case 2:
                     hero.exibirStatus();
@@ -137,7 +137,7 @@ public class Main {
 
                 default:
                     break;
-            } break;
+            }
         }
     }
 }
