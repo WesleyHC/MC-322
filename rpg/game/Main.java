@@ -8,13 +8,15 @@ import rpg.itens.Dracmas;
 import rpg.itens.weapons.*;
 import rpg.personagens.*;
 import rpg.personagens.herois.Demigod;
+import rpg.utils.MenuPrincipal;
 
 public class Main {
 
     public static void main(String[] args) {
         Difficulty[] Dificuldades = Difficulty.values();
         GeradorDeFases geradordefases = new ConstrutorDeCenarioFixo();
-        ArrayList<Fase> fases = geradordefases.gerar(3, Dificuldades[2]);
+        int dificuldade = MenuPrincipal.loop();
+        ArrayList<Fase> fases = geradordefases.gerar(3, Dificuldades[dificuldade]);
         Sword Espada = new Sword();
         Hero hero = new Demigod("Perseus", 250, 18, 1, 0, Espada, 100, 0.25f , 10);
         
