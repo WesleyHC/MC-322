@@ -9,6 +9,7 @@ import rpg.personagens.herois.Satyr;
 public class Sintese implements AcaoDeCombate{
     public void executar(Combatente user, Combatente alvo) {
         Satyr User = (Satyr)user;
+        User.setBiomance(4);
         int cura = User.getBiomance();
         float crit = new Random().nextFloat();
         boolean AE = false;

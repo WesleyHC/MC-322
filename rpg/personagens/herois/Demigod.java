@@ -24,5 +24,9 @@ public class Demigod extends Hero {
         return divineAfinity;
     }
 
+    public void setDivineAfinity(int valor){
+        this.divineAfinity += valor;
+    }
+
 }
 

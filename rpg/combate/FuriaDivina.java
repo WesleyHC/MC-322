@@ -2,6 +2,7 @@ package rpg.combate;
 
 import java.util.Random;
 
+import rpg.exceptions.RecursoException;
 import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.personagens.herois.Demigod;
@@ -10,8 +11,12 @@ public class FuriaDivina implements AcaoDeCombate {
     private String [] Gods = {"Zeus", "Poseidon", "Afrodite", "Ares", "Hades"};
 
     @Override
-    public void executar(Combatente user, Combatente alvo) {
+    public void executar(Combatente user, Combatente alvo) throws RecursoException{
         Demigod User = (Demigod)user; //Usa o poder concedido por um Deus aleatório
+        if (User.getDivineAfinity()<10){
+           throw new RecursoException(User.getName() + " não teve conexão suficiente com os deuses para canalizar suas preces!");
+        }
+        User.setDivineAfinity(-1);
         System.out.println(User.getName() + " usa a habilidade especial 'Fúria Divina'!");
         Random random = new Random();
         int deus = random.nextInt(5);
@@ -20,7 +25,7 @@ public class FuriaDivina implements AcaoDeCombate {
         float crit = new Random().nextFloat();
         if (crit <= User.getSorte()) {
             CH = true;
-            System.out.println("Os deuses estão ao lado de " + User.getName() + "! Seu acerto será crítico.");
+            System.out.println("Os deuses estão ao lado de " + User.getName() + "! Seu acerto será crítico");
         }
 
         switch(Gods[deus]){
@@ -65,7 +70,7 @@ public class FuriaDivina implements AcaoDeCombate {
                 int drain = alvo.receberDano(dano);
                 User.receberCura(drain);
                 break;
+            }
         }
     }
-}
     

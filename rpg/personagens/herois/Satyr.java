@@ -26,4 +26,7 @@ public class Satyr extends Hero {
         return biomance;
     }
 
+    public void setBiomance(int valor){
+        this.biomance += valor;
+    }
 }

@@ -13,6 +13,7 @@ public class Motivate implements AcaoDeCombate{
 
         User.receberCura(motivation*5);
         User.receberForca(motivation);
+        User.setDivineAfinity(motivation*2);
     }
     
 }

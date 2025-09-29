@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import rpg.cenario.*;
 import rpg.exceptions.LvlEquiparException;
+import rpg.exceptions.RecursoException;
 import rpg.interfaces.*;
 import rpg.itens.Dracmas;
 import rpg.itens.weapons.*;
@@ -21,7 +22,7 @@ public class Main {
         if (dificuldade != 5){
         ArrayList<Fase> fases = geradordefases.gerar(3, Dificuldades[dificuldade]);
         Sword Espada = new Sword();
-        Hero hero = new Demigod("Perseus", 250, 18, 1, 0, Espada, 100, 0.25f , 10);
+        Hero hero = new Demigod("Perseus", 250, 18, 1, 0, Espada, 100, 0.25f , 9);
         
         //Mensagem de Introdução
         System.out.println(hero.getName() + " é um herói habilidoso(a), mas sente que seus feitos passam despercebidos pelos Deuses.");
@@ -43,13 +44,19 @@ public class Main {
                         System.out.println("\n=================|TURNO " + turno + "|===================");
 
                         AcaoDeCombate heroiAcao = hero.escolherAcao(monstro);
-                        heroiAcao.executar(hero, monstro);
+                        try{heroiAcao.executar(hero, monstro);
+                        } catch (RecursoException e){
+                            System.out.println("A ação falhou:" + e.getMessage());
+                        }
 
                         //Verificação se o Monstro morreu
                         if (monstro.isAlive()) {
                             AcaoDeCombate monstroAcao = monstro.escolherAcao(hero);
-                            monstroAcao.executar(monstro, hero);
+                            try{monstroAcao.executar(monstro, hero);
+                        } catch (RecursoException e){
+                            System.out.println("A ação falhou: " + e.getMessage());
                         }
+                    }
 
                         hero.exibirStatus();
                         monstro.exibirStatus();
