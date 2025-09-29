@@ -10,12 +10,11 @@ import rpg.personagens.monstros.*;
 
 public class ConstrutorDeCenarioFixo implements GeradorDeFases{
     //Difficulty[] Dificuldades = Difficulty.values();
-    TipoCenario[] Cenarios = TipoCenario.values();
-
+    TipoCenario[] ambientes = TipoCenario.values();
+    
     @Override
     public ArrayList<Fase> gerar(int nFases, Difficulty dificuldade) {
         ArrayList<Fase> fases = new ArrayList<>();
-        TipoCenario[] ambientes = TipoCenario.values();
 
         for (int i = 0; i < nFases; i++) {
             int nivelDolvl = i + 1;
