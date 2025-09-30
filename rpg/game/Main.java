@@ -124,7 +124,7 @@ public class Main {
                             if (item instanceof Dracmas) {
                                 hero.setDracmas(((Dracmas)item).getQuantity());
                             } else if (item instanceof Weapon) {
-                                System.out.println(hero.getName() + " obteve: " + item.getName() + " - Dano:" + ((Weapon)(item)).getDano());
+                                System.out.println(hero.getName() + " obteve: " + item.getName() + " - Dano: " + ((Weapon)(item)).getDano());
                                 try {hero.equipar((Weapon) item);
                             } catch (LvlEquiparException e) {
                                 System.out.println("Não foi possível equipar: " + e.getMessage());
