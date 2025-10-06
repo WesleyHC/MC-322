@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"rpg.cenario"},{"l":"rpg.combate"},{"l":"rpg.eventos"},{"l":"rpg.exceptions"},{"l":"rpg.game"},{"l":"rpg.interfaces"},{"l":"rpg.itens"},{"l":"rpg.itens.weapons"},{"l":"rpg.personagens"},{"l":"rpg.personagens.herois"},{"l":"rpg.personagens.monstros"},{"l":"rpg.utils"}];updateSearchResults();
