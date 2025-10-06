@@ -13,8 +13,17 @@ import rpg.personagens.herois.Demigod;
 import rpg.utils.InputManager;
 import rpg.utils.MenuPrincipal;
 
+/**
+ * Classe principal que contém o ponto de entrada do jogo.
+ * É responsável por organizar toda a campanha, passando pelos loops de fases e combate, até a mensagem final de vitória ou derrota.
+ * Funciona como o "motor" do jogo.
+ */
 public class Main {
 
+    /**
+     * O método principal que inicia e executa o jogo de RPG.
+     * @param args Argumentos de linha de comando.
+     */
     public static void main(String[] args) {
         Difficulty[] Dificuldades = Difficulty.values();
         GeradorDeFases geradordefases = new ConstrutorDeCenarioFixo();

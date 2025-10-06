@@ -5,6 +5,10 @@ import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.personagens.monstros.Ciclop;
 
+/**
+ * Ataque que utiliza o dobro da força, mas com o custo de o usuário ficar com fadiga (não ataca no próximo turno).
+ * Ataque utilizado pelo monstro Ciclope.
+ */
 public class GolpePesado implements AcaoDeCombate{ //golpe do ciclope
     @Override
     public void executar(Combatente user, Combatente alvo) throws RecursoException {

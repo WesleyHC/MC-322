@@ -7,9 +7,19 @@ import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.personagens.herois.Demigod;
 
+/**
+ * Habilidade especial e exclusiva do Semideus (Demigod).
+ * Invoca o poder de um deus aleatório do panteão grego, com efeitos variados que podem ser fortalecidos pela sorte do herói.
+ */
 public class FuriaDivina implements AcaoDeCombate {
     private String [] Gods = {"Zeus", "Poseidon", "Afrodite", "Ares", "Hades"};
 
+    /**
+     * Executa a Fúria Divina. Verifica se o usuário é um Semideus e se tem afinidade o suficiente. Em caso positivo, sorteia um deus e aplica seu efeito.
+     * @param user O Combatente que usa a habilidade (deve ser um Demigod).
+     * @param alvo O alvo da bênção divina (pode ser o próprio usuário em caso de cura).
+     * @throws RecursoException Se o Semideus não tiver Afinidade Divina suficiente.
+     */
     @Override
     public void executar(Combatente user, Combatente alvo) throws RecursoException{
         Demigod User = (Demigod)user; //Usa o poder concedido por um Deus aleatório

@@ -4,6 +4,10 @@ import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.personagens.herois.Demigod;
 
+/**
+ * Ação motivadora do Semideus (Demigod).
+ * Cura, aumenta a força e a afinidade divina do usuário.
+ */
 public class Motivate implements AcaoDeCombate{
     public void executar(Combatente user, Combatente alvo) {
         Demigod User = (Demigod)user;
