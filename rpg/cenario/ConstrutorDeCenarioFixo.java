@@ -8,10 +8,22 @@ import rpg.itens.weapons.*;
 import rpg.personagens.Monster;
 import rpg.personagens.monstros.*;
 
+/**
+ * Implementação concreta de um GeradorDeFases que cria uma campanha fixa.
+ * Esta classe é responsável por definir quais monstros, cenários e eventos aparecerão em cada fase do jogo, além de controlar o balanceamento da dificuldade.
+ */
 public class ConstrutorDeCenarioFixo implements GeradorDeFases{
     //Difficulty[] Dificuldades = Difficulty.values();
     TipoCenario[] ambientes = TipoCenario.values();
     
+    /**
+     * Gera uma lista de fases para a campanha do jogo com base na quantidade e dificuldade.
+     * A cada fase, os monstros se tornam progressivamente mais fortes.
+     *
+     * @param nFases O número de fases a serem criadas para a campanha.
+     * @param dificuldade O nível de dificuldade (FACIL, NORMAL, DIFICIL) que afetará os status dos monstros.
+     * @return Uma lista de Fases para serem jogadas.
+     */
     @Override
     public ArrayList<Fase> gerar(int nFases, Difficulty dificuldade) {
         ArrayList<Fase> fases = new ArrayList<>();

@@ -63,7 +63,7 @@ public class InputManager {
                 continue;
             }
 
-            if ((input.equals("s")) && (input.equals("n"))){
+            if ((input.equals("s")) || (input.equals("n"))){
                 System.out.println("Entrada inválida. Responda com (\"s\") ou (\"n\") ");
             } else {
                 if (input.equals("s"))

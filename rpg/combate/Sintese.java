@@ -6,6 +6,10 @@ import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.personagens.herois.Satyr;
 
+/**
+ * Habilidade especial do Sátiro.
+ * Cura e pode ser crítico.
+ */
 public class Sintese implements AcaoDeCombate{
     public void executar(Combatente user, Combatente alvo) {
         Satyr User = (Satyr)user;

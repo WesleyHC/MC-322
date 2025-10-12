@@ -5,6 +5,9 @@ import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.personagens.herois.Satyr;
 
+/**
+ * Ataque do Sátiro, utiliza sua Biomance (afinidade com a natureza).
+ */
 public class BioAtk implements AcaoDeCombate{
     public void executar(Combatente user, Combatente alvo) throws RecursoException {
         Satyr User = (Satyr)user;
