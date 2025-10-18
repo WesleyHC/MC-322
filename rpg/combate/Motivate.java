@@ -9,6 +9,12 @@ import rpg.personagens.herois.Demigod;
  * Cura, aumenta a força e a afinidade divina do usuário.
  */
 public class Motivate implements AcaoDeCombate{
+    /**
+     * Executa a ação de motivação.
+     * Verifica se o usuário é um Semideus e aplica um bônus de cura, força e Afinidade Divina.
+     * @param user O Combatente (usuário) que vai ser motivado.
+     * @param alvo O oponente no combate (ignorado).
+     */
     public void executar(Combatente user, Combatente alvo) {
         Demigod User = (Demigod)user;
         int motivation = 2;

@@ -37,6 +37,10 @@ public abstract class Monster extends Character implements Lootable{
     }
 
     //Getters
+    /**
+     * Retorna a quantidade de experiência concedida após o monstro ser derrotado.
+     * @return Quantidade de experiência concedida.
+     */
     public int getXpConcedido(){
         return xpConcedido;
     }
@@ -97,7 +101,7 @@ public abstract class Monster extends Character implements Lootable{
 
     /**
      * Implementa a "IA" do monstro, escolhendo uma ação de forma aleatória.
-     * @param alvo O alvo da ação, geralmente o herói.
+     * @param alvo O alvo da ação.
      * @return A ação de combate que o monstro executará neste turno.
      */
     public AcaoDeCombate escolherAcao(Combatente alvo) {

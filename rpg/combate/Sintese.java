@@ -7,10 +7,16 @@ import rpg.interfaces.Combatente;
 import rpg.personagens.herois.Satyr;
 
 /**
- * Habilidade especial do Sátiro.
- * Cura e pode ser crítico.
+ * Representa a habilidade especial de cura "Síntese", exclusiva do Sátiro.
+ * A cura é baseada no atributo Biomancia do Sátiro e pode ter seu efeito dobrado com base na sorte.
  */
 public class Sintese implements AcaoDeCombate{
+    /**
+     * Executa a habilidade de cura Síntese.
+     * Verifica se o usuário é um Sátiro, calcula e aplica a cura, com chance de ser um acerto crítico.
+     * @param user O Combatente que usa a habilidade (deve ser um Satyr).
+     * @param alvo O oponente no combate (ignorado por esta ação).
+     */
     public void executar(Combatente user, Combatente alvo) {
         Satyr User = (Satyr)user;
         User.setBiomance(4);

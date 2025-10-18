@@ -1,8 +1,15 @@
 package rpg.utils;
 
+/**
+ * Classe de utilidade que gerencia o menu principal do jogo, permitindo que o jogador inicie o jogo, veja informações ou saia.
+ */
 public class MenuPrincipal {
     static boolean exit = false;
 
+    /**
+     * Exibe o menu principal em loop até que o jogador escolha iniciar o jogo ou sair.
+     * @return A dificuldade escolhida pelo jogador, ou null se o jogador decidir sair.
+     */
     public static int loop(){
         while(!exit){
         PrintMenuPrincipal();
@@ -26,6 +33,9 @@ public class MenuPrincipal {
         } return 5;
     }
 
+    /**
+     * Exibe as opções do menu principal.
+     */
     public static void PrintMenuPrincipal(){
         System.out.println("\n          A PROVAÇÃO DO OLIMPO: O RPG          ");
         System.out.println("==================================================");
@@ -37,6 +47,10 @@ public class MenuPrincipal {
         System.out.println("==================================================");
         }
 
+    /**
+     * Exibe o menu de seleção de dificuldade e captura a escolha do jogador.
+     * @return O indice da dificuldade escolhida.
+     */
     private static int IniciarNovoJogo(){
         System.out.println("\nIniciando Novo Jogo! Escolha a dificuldade desejada");
         System.out.println("==================================================");
@@ -59,6 +73,9 @@ public class MenuPrincipal {
         return 5;
     }
 
+    /**
+     * Exibe as descrições das classes de heróis disponíveis.
+     */
     private static void ExibirHerois(){
         boolean status = true;
         while (status){
@@ -92,7 +109,9 @@ public class MenuPrincipal {
         return;
         }
     
-
+    /**
+     * Exibe as descrições dos tipos de monstros do jogo.
+     */
     private static void ExibirMonstros(){
         boolean status = true;
         while (status){

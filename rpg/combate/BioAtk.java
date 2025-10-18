@@ -9,6 +9,13 @@ import rpg.personagens.herois.Satyr;
  * Ataque do Sátiro, utiliza sua Biomance (afinidade com a natureza).
  */
 public class BioAtk implements AcaoDeCombate{
+    /**
+     * Executa o BioAtk.
+     * Verifica se o usuário é um Sátiro.
+     * @param user O Combatente que está usando a ação (deve ser um Satyr).
+     * @param alvo O Combatente que está recebendo o ataque.
+     * @throws RecursoException Se o Sátiro não tiver Biomancia suficiente.
+     */
     public void executar(Combatente user, Combatente alvo) throws RecursoException {
         Satyr User = (Satyr)user;
         if (User.getBiomance()<10){

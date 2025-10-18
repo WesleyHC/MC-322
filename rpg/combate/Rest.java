@@ -10,7 +10,6 @@ public class Rest implements AcaoDeCombate{
 
     /**
      * Executa a ação de descanso, curando o usuário em 10% de sua vida atual.
-     * O parâmetro 'alvo' é ignorado nesta ação.
      * @param user O Combatente que vai descansar e se curar.
      * @param alvo O oponente no combate (ignorado).
      */

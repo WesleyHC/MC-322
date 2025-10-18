@@ -9,13 +9,25 @@ import rpg.itens.Dracmas;
 import rpg.itens.weapons.Weapon;
 import rpg.personagens.*;
 
-
+/**
+ * Representa o monstro Quimera, uma criatura híbrida e intimidadora.
+ * Possui uma habilidade que reduz o dano recebido dos ataques do herói.
+ */
 public class Chimera extends Monster {
     //Atributo intimidador (dano do inimigo reduzido)
     private int intimidate;
     private boolean intimidate_msg;
 
     //Construtor
+    /**
+     * Constrói uma nova instância de uma Quimera.
+     * @param name Nome do monstro.
+     * @param pontosDeVida Pontos de vida do monstro.
+     * @param forca Força base do monstro.
+     * @param arma Arma que o monstro utiliza.
+     * @param xpConcedido Experiência concedida ao ser derrotado.
+     * @param intimidate O valor da redução de dano da habilidade.
+     */
     public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate){
         super(name, pontosDeVida, forca, arma, xpConcedido);
         this.intimidate = intimidate;
@@ -25,11 +37,21 @@ public class Chimera extends Monster {
     }
 
     //Getters
+    /**
+     * Retorna o valor da habilidade de intimidação.
+     * @return A quantidade de dano que a Quimera reduz por ataque.
+     */
     public int getIntimidate(){
         return intimidate;
     }
 
     //Métodos
+    /**
+     * Sobrescreve o método padrão para aplicar a habilidade de intimidação.
+     * Reduz o dano recebido pelo valor do atributo intimidate.
+     * @param dano O dano original do ataque.
+     * @return O dano final que foi efetivamente aplicado após a redução.
+     */
     public int receberDano(int dano){
         if (intimidate_msg) {
             System.out.println("O herói está intimidado por " + this.getName() + ", enfraquecendo seu ataque!");
@@ -44,6 +66,12 @@ public class Chimera extends Monster {
         return damage;
     }
 
+    /**
+     * Define o loot que a Quimera deixa ao ser derrotada.
+     * Herda a implementação da classe Monster.
+     * @param heroi O herói que derrotou o monstro.
+     * @return Uma lista de itens contendo as recompensas.
+     */
     @Override
     public ArrayList<Item> droparLoot(Hero heroi) {
         Random random = new Random();

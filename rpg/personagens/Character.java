@@ -34,29 +34,55 @@ public abstract class Character implements Combatente{
         this.acoes = new ArrayList<>();
     }
     //getters
+    /**
+     * Retorna o nome do personagem.
+     * @return Nome do personagem.
+     */
     public String getName(){
         return name;
     }
+    /**
+     * Retorna os pontos de vida do personagem.
+     * @return
+     */
     public int getPontosDeVida(){
         return pontosDeVida;
     }
+    /**
+     * Retorna a força do personagem.
+     * @return Força do personagem.
+     */
     public int getForca(){
         return forca;
     }
-    
+    /**
+     * Retorna a arma do personagem.
+     * @return Arma do personagem.
+     */
     public Weapon getArma(){
         return arma;
     }
-
+    /**
+     * Retorna uma lista de ações de combate do personagem.
+     * @return Uma lista de ações de combate.
+     */
     public List<AcaoDeCombate> getAcoes() {
         return this.acoes;
     }
 
     //setters
+    /**
+     * "Seta" a quantidade de pontos de vida do personagem.
+     * @param valor Quantidade de pontos de vida.
+     */
     protected void setPontosDeVida(int valor){
         pontosDeVida += valor;
     }
 
+    /**
+     * "Seta" a quantidade de força do personagem.
+     * @param valor Quantidade de força.
+     */
     protected void setForca(int valor){
         forca += valor;
     }

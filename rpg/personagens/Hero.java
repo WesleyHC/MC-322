@@ -42,24 +42,48 @@ public abstract class Hero extends Character {
         this.dracmas = 0;
     }
     //Getters
+    /**
+     * Retorna o nível do herói.
+     * @return Nível do herói.
+     */
     public int getNivel(){
         return nivel;
     }
+    /**
+     * Retorna a experiência do herói.
+     * @return Exoeriência do herói.
+     */
     public int getExperiencia(){
         return experiencia;
     }
 
+    /**
+     * Retorna a sorte do herói.
+     * @return Sorte do herói.
+     */
     public float getSorte() {
         return sorte;
     }
+    /**
+     * Retorna a quantidade de Dracmas (moedas) do herói.
+     * @return Quantidade de Dracmas.
+     */
     public int getDracmas(){
         return dracmas;
     }
-    //Setters 
+    //Setters
+    /**
+     * "Seta" a quantidade de Dracmas do herói.
+     * @param valor QUantidade de Dracmas.
+     */
     public void setDracmas(int valor) {
         dracmas += valor;
     }
 
+    /**
+     * "Seta" a sorte do herói.
+     * @param valor Quantidade de sorte.
+     */
     public void setSorte(float valor) {
         sorte += valor;
     }
