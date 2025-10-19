@@ -3,9 +3,22 @@ package rpg.utils;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Uma classe de utilidade para gerenciar e validar a entrada de dados do usuário.
+ * Fornece métodos para ler diferentes tipos de dados.
+ */
 public class InputManager {
-    private static Scanner entrada = new Scanner (System.in);
+    private static Scanner entrada = new Scanner(System.in);
 
+
+    /**
+     * Lê um número inteiro do usuário, garantindo que ele esteja dentro de um intervalo.
+     * Repete a solicitação até que uma entrada válida seja fornecida.
+     * @param mensagem A mensagem a ser exibida para o usuário.
+     * @param min O valor mínimo aceitável.
+     * @param max O valor máximo aceitável.
+     * @return O número inteiro validado.
+     */
     public static int lerInteiro(String mensagem, int min, int max){
         while (true) {
             System.out.print(mensagem + " (" + min + " - " + max + "): ");
@@ -32,6 +45,12 @@ public class InputManager {
     }
     
     }
+
+    /**
+     * Lê uma String não vazia do usuário.
+     * @param mensagem A mensagem a ser exibida para o usuário.
+     * @return A String validada.
+     */
     public static String lerString(String mensagem){
         while (true){
             System.out.print(mensagem);
@@ -52,6 +71,11 @@ public class InputManager {
 
     }
 
+    /**
+     * Lê uma resposta de "sim" ou "não" (s/n) do usuário.
+     * @param mensagem A pergunta a ser feita ao usuário.
+     * @return true se o usuário digitar 's', false se digitar 'n'.
+     */
     public static boolean lerSimNao(String mensagem){
         while (true){
             System.out.print(mensagem + "(s/n)");
@@ -63,7 +87,7 @@ public class InputManager {
                 continue;
             }
 
-            if ((input.equals("s")) || (input.equals("n"))){
+            if (!(input.equals("s")) && !(input.equals("n"))){
                 System.out.println("Entrada inválida. Responda com (\"s\") ou (\"n\") ");
             } else {
                 if (input.equals("s"))
@@ -79,6 +103,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Pausa a execução e espera que o usuário pressione a tecla Enter.
+     * @param mensagem A mensagem a ser exibida antes de esperar.
+     */
     public static void esperarEnter(String mensagem){
         while (true){
             System.out.print(mensagem);
@@ -98,8 +126,20 @@ public class InputManager {
         }
     }
 
-    public static void fecharScanner(){
-        entrada.close();
-    }
+
+    /*
+        public static void fecharScanner(){
+            //entrada.close();
+            //entrada = null;
+        }
+    */
+
+
+    /**
+     * Recria o objeto scanner. Usado para testes para que cada um tenha um stream de entrada limpo.
+     */
+    public static void reabrirScanner() {
+        entrada = new Scanner(System.in);
+}
 
 }
