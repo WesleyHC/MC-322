@@ -15,6 +15,7 @@ import rpg.personagens.herois.Demigod;
 import rpg.personagens.monstros.Ciclop;
 import rpg.exceptions.LvlEquiparException;
 import rpg.exceptions.RecursoException;
+import rpg.cenario.Difficulty;
 
 public class HeroTEST {
 
@@ -38,7 +39,7 @@ public class HeroTEST {
     @Test
     public void testAtacar() throws RecursoException {
         Hero heroi = new Demigod("Herói Atacante", 100, 10, 1, 0, new Sword(), 50, 0.5f, 10);
-        Monster monstro = new Ciclop("Alvo de Teste", 100, 10, new Club(), 50);
+        Monster monstro = new Ciclop("Alvo de Teste", 100, 10, new Club(), 50, Difficulty.MEDIO);
         int vidaInicialDoMonstro = monstro.getPontosDeVida();
         
         AcaoDeCombate Ataque = heroi.getAcoes().get(0);

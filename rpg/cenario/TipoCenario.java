@@ -1,5 +1,6 @@
 package rpg.cenario;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import rpg.personagens.Hero;
 
 public enum TipoCenario {
@@ -32,11 +33,11 @@ public enum TipoCenario {
         this.name = name;
         this.descricao = descricao;
     }
-
+    @XmlElement
     public String getName(){
         return this.name;
     }
-
+    @XmlElement
     public String getDescricao(){
         return this.descricao;
     }

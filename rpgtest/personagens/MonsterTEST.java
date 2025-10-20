@@ -13,19 +13,20 @@ import rpg.personagens.Hero;
 import rpg.personagens.Monster;
 import rpg.personagens.herois.Demigod;
 import rpg.personagens.monstros.Ciclop;
+import rpg.cenario.Difficulty;
 
 public class MonsterTEST {
 
     @Test
     public void testInterfaces() {
-        Monster monstro = new Ciclop("Monstro de Teste", 100, 10, new Club(), 50);
+        Monster monstro = new Ciclop("Monstro de Teste", 100, 10, new Club(), 50, Difficulty.MEDIO);
         assertTrue(monstro instanceof Combatente, "Um Monstro deve ser um Combatente.");
         assertTrue(monstro instanceof Lootable, "Um Monstro deve ser Lootavel.");
     }
 
     @Test
     public void testReceberDano() {
-        Monster monstro = new Ciclop("Monstro de Teste", 100, 10, new Club(), 50);
+        Monster monstro = new Ciclop("Monstro de Teste", 100, 10, new Club(), 50, Difficulty.MEDIO);
         int vidaInicial = monstro.getPontosDeVida();
         int danoSofrido = 45;
 
@@ -36,7 +37,7 @@ public class MonsterTEST {
     @Test
     public void testAtacar() throws RecursoException {
         Hero heroi = new Demigod("Alvo de Teste", 100, 10, 1, 0, new Sword(), 50, 0.5f, 10);
-        Monster monstro = new Ciclop("Monstro Atacante", 100, 10, new Club(), 50);
+        Monster monstro = new Ciclop("Monstro Atacante", 100, 10, new Club(), 50, Difficulty.MEDIO);
         int vidaInicialDoHeroi = heroi.getPontosDeVida();
         
         AcaoDeCombate Ataque = monstro.getAcoes().get(0);

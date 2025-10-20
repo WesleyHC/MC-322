@@ -1,5 +1,6 @@
 package rpg.personagens.herois;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import rpg.combate.BasicAtk;
 import rpg.combate.FuriaDivina;
 import rpg.combate.Motivate;
@@ -20,6 +21,7 @@ public class Demigod extends Hero {
     }
 
     //Getters
+    @XmlElement
     public int getDivineAfinity(){
         return divineAfinity;
     }

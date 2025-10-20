@@ -63,13 +63,13 @@ public class InputManager {
                 continue;
             }
 
-            if ((input.equals("s")) || (input.equals("n"))){
-                System.out.println("Entrada inválida. Responda com (\"s\") ou (\"n\") ");
+            if (input.equals("s")) {
+                return true;
+            }
+            if (input.equals("n")) {
+                return false;
             } else {
-                if (input.equals("s"))
-                    return true;
-                if (input.equals("n"))
-                    return false;
+                 System.out.println("Entrada inválida. Responda com (\"s\") ou (\"n\") ");
             }
 
         } catch (NoSuchElementException e) {

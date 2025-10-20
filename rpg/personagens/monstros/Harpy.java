@@ -1,11 +1,7 @@
 package rpg.personagens.monstros;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import rpg.combate.*;
-import rpg.interfaces.Item;
-import rpg.itens.Dracmas;
+import jakarta.xml.bind.annotation.XmlElement;
+import rpg.cenario.Difficulty;
 import rpg.itens.weapons.Weapon;
 import rpg.personagens.*;
 
@@ -14,14 +10,16 @@ public class Harpy extends Monster {
     private float flight; //0 a 100
 
     //Construtor
-    public Harpy(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, float flight){
-        super(name, pontosDeVida, forca, arma, xpConcedido);
+    public Harpy(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, float flight, Difficulty dificuldade){
+        super(name, pontosDeVida, forca, arma, xpConcedido, dificuldade);
         this.flight = flight;
-        adicionarAcao(new BasicAtk());
-        adicionarAcao(new Rest());
+    }
+    public Harpy() {
+        super();
     }
 
     //Getters
+    @XmlElement
      public float getFlight(){
         return flight;
     }
@@ -37,21 +35,5 @@ public class Harpy extends Monster {
             super.receberDano(dano);
             return dano;
         }
-    }
-
-    @Override
-    public ArrayList<Item> droparLoot(Hero heroi) {
-        Random random = new Random();
-        ArrayList<Item> drops = new ArrayList<>();
-
-        int money = random.nextInt(10, 50);
-        drops.add(new Dracmas(money));
-        System.out.println(this.getName() + " deixou cair " + money + " Dracmas!");
-        Weapon dropArma = largarArma(heroi.getSorte());
-        
-        if (dropArma != null) {
-            drops.add(dropArma);
-        }
-        return drops;
     }
 }

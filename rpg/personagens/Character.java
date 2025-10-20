@@ -2,6 +2,7 @@ package rpg.personagens;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.xml.bind.annotation.XmlElement;
 
 import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
@@ -33,17 +34,23 @@ public abstract class Character implements Combatente{
         this.arma = arma;
         this.acoes = new ArrayList<>();
     }
+    public Character(){
+        this.acoes = new ArrayList<>();
+    }
     //getters
+    @XmlElement
     public String getName(){
         return name;
     }
+    @XmlElement
     public int getPontosDeVida(){
         return pontosDeVida;
     }
+    @XmlElement
     public int getForca(){
         return forca;
     }
-    
+    @XmlElement
     public Weapon getArma(){
         return arma;
     }
@@ -120,7 +127,7 @@ public abstract class Character implements Combatente{
      * Adiciona uma ação a lista de ações de combate do combatente.
      * @param novaAcao A ação que será adicionada.
      */
-    protected void adicionarAcao(AcaoDeCombate novaAcao) {
+    public void adicionarAcao(AcaoDeCombate novaAcao) {
         this.acoes.add(novaAcao);
     }
 }

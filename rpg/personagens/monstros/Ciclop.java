@@ -1,11 +1,8 @@
 package rpg.personagens.monstros;
 
-import java.util.ArrayList;
-import java.util.Random;
-
+import jakarta.xml.bind.annotation.XmlElement;
+import rpg.cenario.Difficulty;
 import rpg.combate.*;
-import rpg.interfaces.Item;
-import rpg.itens.Dracmas;
 import rpg.itens.weapons.Weapon;
 import rpg.personagens.*;
 
@@ -14,14 +11,17 @@ public class Ciclop extends Monster {
     private boolean heavystrike;
 
     //Construtor
-    public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido){
-        super(name, pontosDeVida, forca, arma, xpConcedido);
+    public Ciclop(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, Difficulty dificuldade){
+        super(name, pontosDeVida, forca, arma, xpConcedido, dificuldade);
         this.heavystrike = true;
         adicionarAcao(new GolpePesado());
-        adicionarAcao(new Rest());
+    }
+    public Ciclop() {
+        super();
     }
 
     //Getters
+    @XmlElement
      public boolean getHeavystrike(){
         return heavystrike;
     }
@@ -29,22 +29,5 @@ public class Ciclop extends Monster {
     //Setters
     public void setHeavystrike(boolean heavystrike){
         this.heavystrike = heavystrike;
-    }
-
-    //Métodos
-    @Override
-    public ArrayList<Item> droparLoot(Hero heroi) {
-        Random random = new Random();
-        ArrayList<Item> drops = new ArrayList<>();
-
-        int money = random.nextInt(15, 50);
-        drops.add(new Dracmas(money));
-        System.out.println(this.getName() + " deixou cair " + money + " Dracmas!");
-        Weapon dropArma = largarArma(heroi.getSorte());
-        
-        if (dropArma != null) {
-            drops.add(dropArma);
-        }
-        return drops;
     }
 }

@@ -22,6 +22,9 @@ public class FuriaDivina implements AcaoDeCombate {
      */
     @Override
     public void executar(Combatente user, Combatente alvo) throws RecursoException{
+        if (!(user instanceof Demigod)) {
+            throw new RecursoException("Somente um Semideus pode usar Fúria Divina!");
+        }
         Demigod User = (Demigod)user; //Usa o poder concedido por um Deus aleatório
         if (User.getDivineAfinity()<10){
            throw new RecursoException(User.getName() + " não teve conexão suficiente com os deuses para canalizar suas preces!");

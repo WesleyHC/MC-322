@@ -2,6 +2,7 @@ package rpg.personagens;
 
 import java.util.Random;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import rpg.exceptions.LvlEquiparException;
 import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
@@ -42,16 +43,19 @@ public abstract class Hero extends Character {
         this.dracmas = 0;
     }
     //Getters
+    @XmlElement
     public int getNivel(){
         return nivel;
     }
+    @XmlElement
     public int getExperiencia(){
         return experiencia;
     }
-
+    @XmlElement
     public float getSorte() {
         return sorte;
     }
+    @XmlElement
     public int getDracmas(){
         return dracmas;
     }

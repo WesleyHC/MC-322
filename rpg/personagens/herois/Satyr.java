@@ -1,5 +1,6 @@
 package rpg.personagens.herois;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import rpg.combate.BasicAtk;
 import rpg.combate.BioAtk;
 import rpg.combate.Rest;
@@ -22,6 +23,7 @@ public class Satyr extends Hero {
     }
 
     //Getters
+    @XmlElement
     public int getBiomance(){
         return biomance;
     }

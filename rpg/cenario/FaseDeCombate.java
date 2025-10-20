@@ -2,6 +2,7 @@ package rpg.cenario;
 
 import java.util.ArrayList;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import rpg.interfaces.*;
 import rpg.personagens.*;
 
@@ -61,6 +62,7 @@ public class FaseDeCombate implements Fase {
      * Retorna o número do nível desta fase.
      * @return O nível da fase.
      */
+    @XmlElement
     public int getNivel(){
         return nivel;
     }
@@ -70,6 +72,7 @@ public class FaseDeCombate implements Fase {
      * @return O TipoCenario da fase.
      */
     @Override
+    @XmlElement
     public TipoCenario getTipoDeCenario() {
         return cenario;
     }
@@ -78,6 +81,7 @@ public class FaseDeCombate implements Fase {
      * Retorna a lista de monstros presentes nesta fase.
      * @return Uma lista de Monstros.
      */
+    @XmlElement
     public ArrayList<Monster> getMonstros() {
         return monstrosDolvl;
     }
@@ -86,6 +90,7 @@ public class FaseDeCombate implements Fase {
      * Retorna a lista de eventos que podem ocorrer nesta fase.
      * @return Uma lista de Eventos.
      */
+    @XmlElement
     public ArrayList<Evento> getEventos(){
         return eventos;
     }

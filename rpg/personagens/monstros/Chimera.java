@@ -1,11 +1,7 @@
 package rpg.personagens.monstros;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import rpg.combate.*;
-import rpg.interfaces.Item;
-import rpg.itens.Dracmas;
+import jakarta.xml.bind.annotation.XmlElement;
+import rpg.cenario.Difficulty;
 import rpg.itens.weapons.Weapon;
 import rpg.personagens.*;
 
@@ -16,15 +12,17 @@ public class Chimera extends Monster {
     private boolean intimidate_msg;
 
     //Construtor
-    public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate){
-        super(name, pontosDeVida, forca, arma, xpConcedido);
+    public Chimera(String name, int pontosDeVida, int forca, Weapon arma, int xpConcedido, int intimidate, Difficulty dificuldade){
+        super(name, pontosDeVida, forca, arma, xpConcedido, dificuldade);
         this.intimidate = intimidate;
         this.intimidate_msg = true;
-        adicionarAcao(new BasicAtk());
-        adicionarAcao(new Rest());
+    }
+    public Chimera() {
+        super();
     }
 
     //Getters
+    @XmlElement
     public int getIntimidate(){
         return intimidate;
     }
@@ -42,21 +40,5 @@ public class Chimera extends Monster {
         System.out.println(this.getName() + " resiste ao golpe e sofre apenas " + damage + " de dano.");
         super.receberDano(damage);
         return damage;
-    }
-
-    @Override
-    public ArrayList<Item> droparLoot(Hero heroi) {
-        Random random = new Random();
-        ArrayList<Item> drops = new ArrayList<>();
-
-        int money = random.nextInt(12, 50);
-        drops.add(new Dracmas(money));
-        System.out.println(this.getName() + " deixou cair " + money + " Dracmas!");
-        Weapon dropArma = largarArma(heroi.getSorte());
-        
-        if (dropArma != null) {
-            drops.add(dropArma);
-        }
-        return drops;
     }
 }

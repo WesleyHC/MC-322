@@ -1,5 +1,6 @@
 package rpg.itens.weapons;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import rpg.interfaces.Item;
 
 public abstract class Weapon implements Item{
@@ -14,17 +15,18 @@ public abstract class Weapon implements Item{
     }
 
     //Getters
+    @XmlElement
     public int getMinNivel(){
         return minNivel;
     }
-
+    @XmlElement
     public int getDano(){
         return dano;
     }
-
+    @XmlElement
     public void mult_dano(double aumento){
         this.dano += (int)(this.dano * aumento/2);
     }
-    
+    @XmlElement
     public abstract String getName();
 }

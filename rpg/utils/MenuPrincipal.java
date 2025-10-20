@@ -1,43 +1,66 @@
 package rpg.utils;
 
-public class MenuPrincipal {
-    static boolean exit = false;
+import rpg.game.GerenciadorDePersistencia;
 
-    public static int loop(){
-        while(!exit){
-        PrintMenuPrincipal();
-        int opcao = InputManager.lerInteiro("Digite sua opção >", 1, 4);
-        switch (opcao) {
-                case 1:
-                    return IniciarNovoJogo();
-                case 2:
-                    ExibirHerois();
-                    break;
-                case 3:
-                    ExibirMonstros();
-                    break;
-                case 4:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("");
-                    break;
+public class MenuPrincipal {
+    public static final int NOVO_JOGO_FACIL = 0;
+    public static final int NOVO_JOGO_MEDIO = 1;
+    public static final int NOVO_JOGO_DIFICIL = 2;
+    public static final int CARREGAR_JOGO = 3;
+    public static final int SAIR_DO_JOGO = 4;
+    private static final String NOME_ARQUIVO_SAVE = "save.xml";
+
+    /**
+     * Exibe o menu principal em loop e gerencia a navegação do usuário.
+     * @return Um código inteiro representando a escolha do jogador.
+     */
+    public static int loop() {
+        while (true) {
+            printMenuPrincipal();
+            int maxOpcao = GerenciadorDePersistencia.existeJogoSalvo(NOME_ARQUIVO_SAVE) ? 5 : 4;
+            int opcao = InputManager.lerInteiro("Digite sua opção >", 1, maxOpcao);
+
+            if (GerenciadorDePersistencia.existeJogoSalvo(NOME_ARQUIVO_SAVE)) {
+                switch (opcao) {
+                    case 1: return iniciarNovoJogo();
+                    case 2: return CARREGAR_JOGO;
+                    case 3: exibirHerois(); break;
+                    case 4: exibirMonstros(); break;
+                    case 5: return SAIR_DO_JOGO;
+                }
+            } else {
+                switch (opcao) {
+                    case 1: return iniciarNovoJogo();
+                    case 2: exibirHerois(); break;
+                    case 3: exibirMonstros(); break;
+                    case 4: return SAIR_DO_JOGO;
+                }
             }
-        } return 5;
+        }
     }
 
-    public static void PrintMenuPrincipal(){
-        System.out.println("\n          A PROVAÇÃO DO OLIMPO: O RPG          ");
+    /**
+     * Imprime o layout visual do menu principal.
+     */
+    public static void printMenuPrincipal() {
+        System.out.println("\n           A PROVAÇÃO DO OLIMPO: O RPG           ");
         System.out.println("==================================================");
-        System.out.println("");
         System.out.println("[1] Iniciar Novo Jogo");
-        System.out.println("[2] Ver Informações das Classes de Heróis");
-        System.out.println("[3] Ver Informações das Classes de Monstros");
-        System.out.println("[4] Sair do Jogo");
-        System.out.println("==================================================");
+        
+        if (GerenciadorDePersistencia.existeJogoSalvo(NOME_ARQUIVO_SAVE)) {
+            System.out.println("[2] Carregar Jogo");
+            System.out.println("[3] Ver Informações das Classes de Heróis");
+            System.out.println("[4] Ver Informações das Classes de Monstros");
+            System.out.println("[5] Sair do Jogo");
+        } else {
+            System.out.println("[2] Ver Informações das Classes de Heróis");
+            System.out.println("[3] Ver Informações das Classes de Monstros");
+            System.out.println("[4] Sair do Jogo");
         }
+        System.out.println("==================================================");
+    }
 
-    private static int IniciarNovoJogo(){
+    private static int iniciarNovoJogo(){
         System.out.println("\nIniciando Novo Jogo! Escolha a dificuldade desejada");
         System.out.println("==================================================");
         System.out.println("[1] Fácil - \" Um passeio tranquilo para nosso herói, monstros letárgicos diante da força de Perseus. Perfeito para acompanhar a história e acompanhar os eventos\" ");
@@ -59,7 +82,7 @@ public class MenuPrincipal {
         return 5;
     }
 
-    private static void ExibirHerois(){
+    private static void exibirHerois(){
         boolean status = true;
         while (status){
         System.out.println("\n              Disposição de Heróis              ");
@@ -93,7 +116,7 @@ public class MenuPrincipal {
         }
     
 
-    private static void ExibirMonstros(){
+    private static void exibirMonstros(){
         boolean status = true;
         while (status){
         System.out.println("\n              Elenco de Monstros              ");

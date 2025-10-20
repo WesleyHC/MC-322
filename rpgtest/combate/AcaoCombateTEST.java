@@ -11,13 +11,14 @@ import rpg.itens.weapons.Sword;
 import rpg.personagens.Monster;
 import rpg.personagens.herois.Demigod;
 import rpg.personagens.monstros.Ciclop;
+import rpg.cenario.Difficulty;
 
 public class AcaoCombateTEST {
 
     @Test
     public void testFuriaDivinaExcecao() {
         Demigod heroiFraco = new Demigod("Sem Fé", 100, 10, 1, 0, new Sword(), 50, 0.5f, 2);
-        Monster alvo = new Ciclop("Alvo", 100, 10, new Sword(), 50);
+        Monster alvo = new Ciclop("Alvo", 100, 10, new Sword(), 50, Difficulty.MEDIO);
         AcaoDeCombate furiaDivina = new FuriaDivina();
 
         RecursoException exception = assertThrows(RecursoException.class, () -> {
