@@ -60,12 +60,20 @@ public abstract class Character implements Combatente{
     }
 
     //setters
-    protected void setPontosDeVida(int valor){
+    public void setPontosDeVida(int valor){
         pontosDeVida += valor;
     }
 
-    protected void setForca(int valor){
+    public void setForca(int valor){
         forca += valor;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setArma(Weapon arma) {
+        this.arma = arma;
     }
 
     //Métodos

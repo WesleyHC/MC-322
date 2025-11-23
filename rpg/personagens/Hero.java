@@ -3,16 +3,21 @@ package rpg.personagens;
 import java.util.Random;
 
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import rpg.exceptions.LvlEquiparException;
 import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
 import rpg.interfaces.Item;
 import rpg.itens.weapons.Weapon;
+import rpg.personagens.herois.Demigod;
+import rpg.personagens.herois.Satyr;
 
 /**
  * Classe abstrata que serve como base para todos os heróis jogáveis.
  * Herda de Character e adiciona mecânicas de progressão como nível, experiência e gerenciamento de inventário/moedas.
  */
+@XmlSeeAlso({Demigod.class, Satyr.class})
 public abstract class Hero extends Character {
     //Atributos
     private int nivel;
@@ -20,6 +25,8 @@ public abstract class Hero extends Character {
     private int expProximoNivel;
     private float sorte;
     private int dracmas;
+
+    @XmlTransient
     private Random random = new Random();
 
     //Construtor
@@ -42,6 +49,9 @@ public abstract class Hero extends Character {
         this.sorte = sorte;
         this.dracmas = 0;
     }
+
+    public Hero() {
+    }
     //Getters
     @XmlElement
     public int getNivel(){
@@ -50,6 +60,10 @@ public abstract class Hero extends Character {
     @XmlElement
     public int getExperiencia(){
         return experiencia;
+    }
+    @XmlElement
+    public int getExpProximoNivel() {
+        return expProximoNivel;
     }
     @XmlElement
     public float getSorte() {
@@ -67,7 +81,19 @@ public abstract class Hero extends Character {
     public void setSorte(float valor) {
         sorte += valor;
     }
-    
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public void setExpProximoNivel(int expProximoNivel) {
+        this.expProximoNivel = expProximoNivel;
+    }
+
     //Métodos
     /**
      * Processo que ocorre quando o herói sobe de nível.
@@ -136,6 +162,10 @@ public abstract class Hero extends Character {
      * @return A AcaoDeCombate escolhida para ser executada.
      */
     public AcaoDeCombate escolherAcao(Combatente alvo) {
+        if (acoes.isEmpty())
+            return null;
+        if (random == null) 
+            random = new Random();
         return acoes.get(random.nextInt(acoes.size()));
     }
 

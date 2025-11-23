@@ -1,7 +1,5 @@
 package rpg.cenario;
 
-import jakarta.xml.bind.annotation.XmlElement;
-
 public enum Difficulty {
     FACIL(1,1, 1){
         public void printar(){
@@ -28,15 +26,15 @@ public enum Difficulty {
         this.mult_vida = mult_vida;
         this.mult_arma = mult_arma;
     }
-    @XmlElement
+    
     public double getMultDano(){
         return this.mult_dano;
     }
-    @XmlElement
+
     public double getMultVida(){
         return this.mult_vida;
     }
-    @XmlElement
+
     public double getMultArma(){
         return this.mult_arma;
     }

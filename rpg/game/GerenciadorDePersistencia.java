@@ -5,6 +5,8 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import rpg.cenario.FaseDeCombate;
+import rpg.eventos.Hermes;
 import rpg.itens.weapons.Bow;
 import rpg.itens.weapons.Club;
 import rpg.itens.weapons.Spear;
@@ -23,7 +25,9 @@ public class GerenciadorDePersistencia {
      */
     public static void salvarBatalha(Batalha batalha, String nomeArquivo) {
         try {
-            JAXBContext context = JAXBContext.newInstance(Batalha.class, Demigod.class, Satyr.class, Ciclop.class, Harpy.class, Chimera.class,Sword.class, Bow.class, Club.class, Spear.class);
+            JAXBContext context = JAXBContext.newInstance(Batalha.class, Demigod.class, Satyr.class, Ciclop.class, Harpy.class,
+            Chimera.class, Sword.class, Bow.class, Club.class, Spear.class, FaseDeCombate.class, Hermes.class);
+            
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(batalha, new File(nomeArquivo));
@@ -31,6 +35,7 @@ public class GerenciadorDePersistencia {
 
         } catch (JAXBException e) {
             System.err.println("Erro ao salvar o jogo");
+            e.printStackTrace();
         }
     }
     /**

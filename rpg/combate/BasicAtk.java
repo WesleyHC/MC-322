@@ -15,10 +15,9 @@ public class BasicAtk implements AcaoDeCombate{
      */
     @Override
     public void executar(Combatente user, Combatente alvo) {
-        rpg.personagens.Character User = (rpg.personagens.Character)user;
-        int dano = User.getForca() + User.getArma().getDano();
+        int dano = user.getForca() + user.getArma().getDano();
         
-        System.out.println(User.getName() + " ataca, causando " + dano + " de dano em " + alvo.getName());
+        System.out.println(user.getName() + " ataca, causando " + dano + " de dano em " + alvo.getName());
         alvo.receberDano(dano);
     }
 }

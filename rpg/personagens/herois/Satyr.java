@@ -1,10 +1,7 @@
 package rpg.personagens.herois;
 
 import jakarta.xml.bind.annotation.XmlElement;
-import rpg.combate.BasicAtk;
-import rpg.combate.BioAtk;
-import rpg.combate.Rest;
-import rpg.combate.Sintese;
+import rpg.combate.Actions;
 import rpg.itens.weapons.Weapon;
 import rpg.personagens.Hero;
 
@@ -16,19 +13,26 @@ public class Satyr extends Hero {
     public Satyr(String name, int pontosDeVida, int forca, int nivel, int experiencia, Weapon arma, int expProximoNivel, float sorte, int biomance){
         super(name, pontosDeVida, forca, nivel, experiencia, arma, expProximoNivel, sorte);
         this.biomance = biomance;
-        adicionarAcao(new BasicAtk());
-        adicionarAcao(new Sintese());
-        adicionarAcao(new BioAtk());
-        adicionarAcao(new Rest());
+        adicionarAcao(Actions.ATAQUE_BASICO);
+        adicionarAcao(Actions.SINTESE);
+        adicionarAcao(Actions.BIO_ATAQUE);
+        adicionarAcao(Actions.DESCANSAR);
+    }
+
+    public Satyr(){
+        adicionarAcao(Actions.ATAQUE_BASICO);
+        adicionarAcao(Actions.SINTESE);
+        adicionarAcao(Actions.BIO_ATAQUE);
+        adicionarAcao(Actions.DESCANSAR);
     }
 
     //Getters
     @XmlElement
-    public int getBiomance(){
+    public int getAtributoEspecial(){
         return biomance;
     }
 
-    public void setBiomance(int valor){
+    public void setAtributoEspecial(int valor){
         this.biomance += valor;
     }
 }

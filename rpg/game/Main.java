@@ -44,14 +44,16 @@ public class Main {
             }
 
             //final
-            if (batalha.runFinished() && batalha.getHero().isAlive()) {
+            if (batalha.getFaseAtual() >= batalha.getFases().size()) {
                 System.out.println("\nO silêncio na arena é quebrado por um trovão distante: o aplauso do Olimpo.");
                 System.out.println("Com a Caixa de Pandora em mãos, " + batalha.getHero().getName() + " se provou digno(a) da atenção dos Deuses!");
                 System.out.println("\n=================|VITÓRIA|===================");
-            } else {
+            } else if (!batalha.getHero().isAlive()) {
                 System.out.println("\n" + batalha.getHero().getName() + " foi derrotado(a)!");
                 System.out.println("O Olimpo vira o rosto, e o nome de " + batalha.getHero().getName() + " se perde no esquecimento.");
                 System.out.println("\n================|GAME OVER|===================");
+            } else {
+                System.out.println("\nJogo encerrado. Até a próxima!");
             }
         }
 

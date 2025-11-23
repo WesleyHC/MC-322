@@ -10,19 +10,25 @@ import rpg.itens.weapons.*;
 import rpg.exceptions.LvlEquiparException;
 import rpg.exceptions.RecursoException;
 import rpg.interfaces.*;
-
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 import java.util.ArrayList;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlSeeAlso({Demigod.class, Satyr.class, Ciclop.class, Harpy.class, Chimera.class, Sword.class, Bow.class, Club.class, Spear.class, FaseDeCombate.class})
 public class Batalha {
     private Hero hero;
     private ArrayList<Fase> fases;
     private int faseAtual;
+
+    @XmlTransient
+    private boolean sairDoJogo = false;
 
     public Batalha(Difficulty dificuldade) {
         this.hero = new Demigod("Perseus", 250, 18, 1, 0, new Sword(), 100, 0.25f , 9);
@@ -32,7 +38,7 @@ public class Batalha {
     }
 
     public Batalha(){
-        
+        this.fases = new ArrayList<>();
     }
 
     //Getters
@@ -40,7 +46,7 @@ public class Batalha {
     public Hero getHero() {
         return hero; 
     }
-    @XmlElement
+    @XmlElement(name = "fase", type = FaseDeCombate.class)
     public ArrayList<Fase> getFases() {
         return fases;
     }
@@ -115,7 +121,6 @@ public class Batalha {
                 }
                 boolean continuar = posCombate(loot);
                 if (!continuar) {
-                    hero.receberDano(9999); 
                     return;
                 }    
                 //eventos
@@ -135,7 +140,7 @@ public class Batalha {
         }
 
     public boolean runFinished() {
-        if (!hero.isAlive() || faseAtual>=fases.size()) {
+        if (!hero.isAlive() || faseAtual>=fases.size() || sairDoJogo) {
             return true;
         } else {
             return false;
@@ -203,10 +208,12 @@ public class Batalha {
                 
                 case 3: //Salvar e sair
                     GerenciadorDePersistencia.salvarBatalha(this, "save.xml");
+                    this.sairDoJogo = true;
                     return false;
 
                 case 4: //Desistir
                     System.out.println(this.hero.getName() + " desiste de sua jornada...");
+                    this.sairDoJogo = true;
                     return false;
             }
             

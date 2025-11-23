@@ -4,7 +4,6 @@ import java.util.Random;
 
 import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
-import rpg.personagens.herois.Satyr;
 
 /**
  * Habilidade especial do Sátiro.
@@ -12,21 +11,20 @@ import rpg.personagens.herois.Satyr;
  */
 public class Sintese implements AcaoDeCombate{
     public void executar(Combatente user, Combatente alvo) {
-        Satyr User = (Satyr)user;
-        User.setBiomance(4);
-        int cura = User.getBiomance();
+        user.setAtributoEspecial(4);
+        int cura = user.getAtributoEspecial();
         float crit = new Random().nextFloat();
         boolean AE = false;
-        if (crit <= User.getSorte()) {
+        if (crit <= user.getSorte()) {
             AE = true;
-            System.out.println("Os espíritos da natureza favorecem " + User.getName() + "! Sua cura foi fortalecida");
+            System.out.println("Os espíritos da natureza favorecem " + user.getName() + "! Sua cura foi fortalecida");
         }
-        System.out.println(User.getName() + " usa a habilidade especial 'Síntese'!");
-        System.out.println(User.getName() + " absorve energia vital e se cura!");
+        System.out.println(user.getName() + " usa a habilidade especial 'Síntese'!");
+        System.out.println(user.getName() + " absorve energia vital e se cura!");
         if (AE){
             cura *= 2;
         }
-        User.receberCura(cura);
+        user.receberCura(cura);
     }
 }
     

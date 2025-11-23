@@ -1,11 +1,17 @@
 package rpg.personagens.monstros;
 
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import rpg.cenario.Difficulty;
+import rpg.combate.Actions;
 import rpg.itens.weapons.Weapon;
 import rpg.personagens.*;
 
-
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class Chimera extends Monster {
     //Atributo intimidador (dano do inimigo reduzido)
     private int intimidate;
@@ -19,12 +25,35 @@ public class Chimera extends Monster {
     }
     public Chimera() {
         super();
+        adicionarAcao(Actions.ATAQUE_BASICO);
+        adicionarAcao(Actions.DESCANSAR);
     }
 
     //Getters
     @XmlElement
     public int getIntimidate(){
         return intimidate;
+    }
+    @XmlElement
+    @Override
+    public int getAtributoEspecial() {
+        return 0; //não têm atributo especial
+    }
+
+    @Override
+    public void setAtributoEspecial(int valor) {
+    }
+
+    @XmlElement
+    @Override
+    public float getSorte() {
+        return 0; //sem sorte
+    }
+
+    @XmlElement
+    @Override
+    public int getNivel() {
+        return 1;
     }
 
     //Métodos

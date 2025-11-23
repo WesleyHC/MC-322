@@ -1,4 +1,5 @@
 package rpg.interfaces;
+import rpg.itens.weapons.Weapon;
 
 /**
  * Representa qualquer entidade que pode participar de uma batalha, com comportamentos que tanto heróis quanto monstros devem ter.
@@ -35,6 +36,18 @@ public interface Combatente {
      * @param cura A quantidade de cura que será recebida.
      */
     void receberCura(int cura);
+
+    int getForca();
+
+    int getNivel();
+
+    Weapon getArma();
+
+    float getSorte();
+
+    int getAtributoEspecial();
+
+    void setAtributoEspecial(int valor);
     /**
      * Lógica para a escolha da próxima ação de combate, decidindo qual ação será usada no turno.
      * @param alvo Combatente que será alvo da ação.

@@ -2,14 +2,31 @@ package rpg.cenario;
 
 import java.util.ArrayList;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+import rpg.eventos.Hermes;
 import rpg.interfaces.*;
 import rpg.personagens.*;
+import rpg.personagens.monstros.Chimera;
+import rpg.personagens.monstros.Ciclop;
+import rpg.personagens.monstros.Harpy;
 
 /**
  * Implementação concreta de uma Fase do jogo, focada em uma sequência de combates.
  * Esta classe armazena todos os monstros, o cenário e os eventos de um determinado nível.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlSeeAlso({
+    Ciclop.class,
+    Harpy.class,
+    Chimera.class,
+    Hermes.class
+})
 public class FaseDeCombate implements Fase {
     //Atributos
     private int nivel;
@@ -30,6 +47,11 @@ public class FaseDeCombate implements Fase {
         this.cenario = cenario;
         this.monstrosDolvl = monstrosDolvl;
         this.eventos = eventos;
+    }
+
+    public FaseDeCombate() {
+        this.monstrosDolvl = new ArrayList<>();
+        this.eventos = new ArrayList<>();
     }
 
      /**
@@ -81,7 +103,8 @@ public class FaseDeCombate implements Fase {
      * Retorna a lista de monstros presentes nesta fase.
      * @return Uma lista de Monstros.
      */
-    @XmlElement
+    @XmlElementWrapper(name="monstros")
+    @XmlElement(name="monstro")
     public ArrayList<Monster> getMonstros() {
         return monstrosDolvl;
     }
@@ -90,8 +113,14 @@ public class FaseDeCombate implements Fase {
      * Retorna a lista de eventos que podem ocorrer nesta fase.
      * @return Uma lista de Eventos.
      */
-    @XmlElement
+    @XmlElementWrapper(name="eventos")
+    @XmlElement(name="evento", type = Hermes.class)
     public ArrayList<Evento> getEventos(){
         return eventos;
+    }
+
+    //Setters
+    public void setTipoDeCenario(TipoCenario cenario) {
+        this.cenario = cenario;
     }
 }

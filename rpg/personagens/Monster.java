@@ -10,12 +10,15 @@ import rpg.interfaces.Item;
 import rpg.interfaces.Lootable;
 import rpg.itens.Dracmas;
 import rpg.itens.weapons.Weapon;
-
+import rpg.personagens.monstros.*;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 /**
  * Classe abstrata que serve como base para todos os inimigos (monstros) no jogo.
  * Herda de Character e implementa a interface Lootavel, garantindo que todo monstro possa deixar recompensas.
  */
+@XmlSeeAlso({Chimera.class, Ciclop.class, Harpy.class})
 public abstract class Monster extends Character implements Lootable{
     //Atributos
     private int xpConcedido;
@@ -53,19 +56,29 @@ public abstract class Monster extends Character implements Lootable{
         return xpConcedido;
     }
 
-    @XmlElement
+    @XmlElementWrapper(name = "armasComuns")
+    @XmlElement(name = "arma")
     public ArrayList<String> getArmasComuns() {
         return armasComuns;
     }
 
-    @XmlElement
+    @XmlElementWrapper(name = "armasRaras")
+    @XmlElement(name = "arma")
     public ArrayList<String> getArmasRaras() {
         return armasRaras;
+    }
+
+    @XmlElement
+    public Difficulty getDificuldade(){
+        return dificuldade;
     }
 
     //Setters
     public void setXpConcedido(int xp) {
         this.xpConcedido = xp;
+    }
+    public void setDificuldade(Difficulty dificuldade) {
+        this.dificuldade = dificuldade;
     }
     public void setArmasComuns(ArrayList<String> nomesArmasComuns) {
         this.armasComuns = nomesArmasComuns;

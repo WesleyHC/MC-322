@@ -5,8 +5,6 @@ import java.util.Random;
 import rpg.exceptions.RecursoException;
 import rpg.interfaces.AcaoDeCombate;
 import rpg.interfaces.Combatente;
-import rpg.personagens.herois.Demigod;
-
 /**
  * Habilidade especial e exclusiva do Semideus (Demigod).
  * Invoca o poder de um deus aleatório do panteão grego, com efeitos variados que podem ser fortalecidos pela sorte do herói.
@@ -21,29 +19,25 @@ public class FuriaDivina implements AcaoDeCombate {
      * @throws RecursoException Se o Semideus não tiver Afinidade Divina suficiente.
      */
     @Override
-    public void executar(Combatente user, Combatente alvo) throws RecursoException{
-        if (!(user instanceof Demigod)) {
-            throw new RecursoException("Somente um Semideus pode usar Fúria Divina!");
+    public void executar(Combatente user, Combatente alvo) throws RecursoException {
+        if (user.getAtributoEspecial()<10){
+           throw new RecursoException(user.getName() + " não teve conexão suficiente com os deuses para canalizar suas preces!");
         }
-        Demigod User = (Demigod)user; //Usa o poder concedido por um Deus aleatório
-        if (User.getDivineAfinity()<10){
-           throw new RecursoException(User.getName() + " não teve conexão suficiente com os deuses para canalizar suas preces!");
-        }
-        User.setDivineAfinity(-1);
-        System.out.println(User.getName() + " usa a habilidade especial 'Fúria Divina'!");
+        user.setAtributoEspecial(-1);
+        System.out.println(user.getName() + " usa a habilidade especial 'Fúria Divina'!");
         Random random = new Random();
         int deus = random.nextInt(5);
         int dano;
         boolean CH = false;
         float crit = new Random().nextFloat();
-        if (crit <= User.getSorte()) {
+        if (crit <= user.getSorte()) {
             CH = true;
-            System.out.println("Os deuses estão ao lado de " + User.getName() + "! Seu acerto será crítico");
+            System.out.println("Os deuses estão ao lado de " + user.getName() + "! Seu acerto será crítico");
         }
 
         switch(Gods[deus]){
             case("Zeus"):
-                dano = User.getForca() + User.getDivineAfinity() * 2 + User.getArma().getDano();
+                dano = user.getForca() + user.getAtributoEspecial() * 2 + user.getArma().getDano();
                 if (CH){
                     dano *= 1.5;
                 }
@@ -51,7 +45,7 @@ public class FuriaDivina implements AcaoDeCombate {
                 alvo.receberDano(dano);
                 break;
             case("Poseidon"):
-                dano = User.getForca() + User.getDivineAfinity() + User.getArma().getDano();
+                dano = user.getForca() + user.getAtributoEspecial() + user.getArma().getDano();
                 if (CH){
                     dano *= 1.5;
                 }
@@ -59,15 +53,15 @@ public class FuriaDivina implements AcaoDeCombate {
                 alvo.receberDano(dano);
                 break;
             case("Afrodite"):
-                int cura = User.getDivineAfinity() + (User.getNivel() * 15);
+                int cura = user.getAtributoEspecial() + (user.getNivel() * 15);
                 if (CH){
                     cura *= 2;
                 }
-                System.out.println("BENÇÃO DE AFRODITE!\nUma aura pura envolve " + User.getName() + ", fechando seus ferimentos!");
-                User.receberCura(cura);
+                System.out.println("BENÇÃO DE AFRODITE!\nUma aura pura envolve " + user.getName() + ", fechando seus ferimentos!");
+                user.receberCura(cura);
                 break;
             case("Ares"): 
-                dano = User.getForca() * 3 + User.getArma().getDano();
+                dano = user.getForca() * 3 + user.getArma().getDano();
                 if (CH){
                     dano *= 1.5;
                 }
@@ -75,13 +69,13 @@ public class FuriaDivina implements AcaoDeCombate {
                 alvo.receberDano(dano);
                 break;
             case("Hades"):  
-                dano = User.getDivineAfinity() * 2 + User.getArma().getDano();
+                dano = user.getAtributoEspecial() * 2 + user.getArma().getDano();
                 if (CH){
                     dano *= 1.5;
                 }
                 System.out.println("BENÇÃO DE HADES!\nA energia vital de " + alvo.getName() + " é drenada!");
                 int drain = alvo.receberDano(dano);
-                User.receberCura(drain);
+                user.receberCura(drain);
                 break;
             }
         }

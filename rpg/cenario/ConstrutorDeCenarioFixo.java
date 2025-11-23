@@ -14,8 +14,6 @@ import rpg.personagens.monstros.*;
  * Esta classe é responsável por definir quais monstros, cenários e eventos aparecerão em cada fase do jogo, além de controlar o balanceamento da dificuldade.
  */
 public class ConstrutorDeCenarioFixo implements GeradorDeFases{
-    private static final  BasicAtk ATAQUE_BASICO = new BasicAtk();
-    private static final Rest DESCANSO = new Rest();
     //Difficulty[] Dificuldades = Difficulty.values();
     TipoCenario[] ambientes = TipoCenario.values();
     
@@ -45,21 +43,22 @@ public class ConstrutorDeCenarioFixo implements GeradorDeFases{
                 
                 if (j == 0) {
                     Ciclop ciclope = new Ciclop("Ciclope", 40 + vidaBonus, 15 + forcaBonus, new Club(), 15 + xpBonus, dificuldade);
-                    ciclope.adicionarAcao(DESCANSO);
+                    ciclope.adicionarAcao(Actions.GOLPE_PESADO);
+                    ciclope.adicionarAcao(Actions.DESCANSAR);
                     ciclope.addArmaComum(Sword.class.getName());
                     ciclope.addArmaRara(Club.class.getName());
                     monstrosDolvl.add(ciclope);
                 } else if (j == 1) {
                     Harpy harpia = new Harpy("Harpia", 30 + vidaBonus, 5 + forcaBonus, new Bow(), 10 + xpBonus, 35, dificuldade);
-                    harpia.adicionarAcao(ATAQUE_BASICO);
-                    harpia.adicionarAcao(DESCANSO);
+                    harpia.adicionarAcao(Actions.ATAQUE_BASICO);
+                    harpia.adicionarAcao(Actions.DESCANSAR);
                     harpia.addArmaComum(Sword.class.getName());
                     harpia.addArmaRara(Bow.class.getName());
                     monstrosDolvl.add(harpia);
                 } else {
                     Chimera quimera = new Chimera("Quimera", 45 + vidaBonus, 10 + forcaBonus, new Sword(), 20 + xpBonus + 5, 5*nivelDolvl, dificuldade);
-                    quimera.adicionarAcao(ATAQUE_BASICO);
-                    quimera.adicionarAcao(DESCANSO);
+                    quimera.adicionarAcao(Actions.ATAQUE_BASICO);
+                    quimera.adicionarAcao(Actions.DESCANSAR);
                     quimera.addArmaComum(Sword.class.getName());
                     quimera.addArmaRara(Spear.class.getName());
                     monstrosDolvl.add(quimera);
